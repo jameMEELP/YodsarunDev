@@ -125,7 +125,7 @@ $(document).ready(function(e) {
 			$("#status > .content").text("Updating");
 		} else {
 			$("#status").removeClass("success").addClass("danger");
-			$("#status > .content").text("Updated");
+			$("#status > .content").text("Updating");
 		}
 		
 		setTimeoffline();
@@ -137,7 +137,7 @@ var setTimeoffline = function() {
 	
 	toOffline = setTimeout(function() {
 		$("#status").removeClass("success").addClass("danger");
-		$("#status > .content").text("OFFLINE");
+		$("#status > .content").text("Updated");
 	}, 2 * 60 * 1000);
 }
 </script>
