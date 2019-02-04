@@ -354,7 +354,19 @@ var setTimeoffline = function() {
 			<div class="col-sm-4">
 			<div id="chart_div" style="width: 400px; height: 120px;"></div>
 			</div>
-        </div>
+		</div>
+		<div role="tabpanel" class="tab-pane active" id="overview">
+				<div class="row">
+					<div class="col-sm-4">
+		<center>
+		<img src=image/aqi.png width="40%" >
+		  <div>Last up date</div></center>
+		<center>
+		 <div class="dialog success fadeIn animated" class="content" id="update_time"></div> 
+		</center>
+		</div>
+		</div>
+		</div>
       </div>
       <div role="tabpanel" class="tab-pane" id="history">
         <div id="chartContainer" style="height: 300px; width: 100%;"></div>
@@ -363,18 +375,7 @@ var setTimeoffline = function() {
 		
   </div>
 
-  <div role="tabpanel" class="tab-pane active" id="overview">
-		<div class="row">
-			<div class="col-sm-4">
-<center>
-<img src=image/aqi.png width="40%" >
-  <div>Last up date</div></center>
-<center>
- <div class="dialog success fadeIn animated" class="content" id="update_time"></div> 
-</center>
-</div>
-</div>
-</div>
+
 	
 </body>
 
