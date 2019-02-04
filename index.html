@@ -94,6 +94,9 @@ $(document).ready(function(e) {
 		
 		$("#temperature > .content").html(row.temperature + " &deg;C");
 		$("#humidity > .content").text(row.humidity + " %");
+		$("#pm1").text(row.pm1 + " ug/m3");
+		$("#pm25").text(row.pm25 + " ug/m3");
+		$("#pm10").text(row.pm10 + " ug/m3");
 		$('#update_time > .content').text(now.getFullYear() + "-" + (now.getMonth() + 1) + "-" + now.getDate() + "  " + now.getTime());
 		
 		$("#status").removeClass("success").addClass("danger");
@@ -103,7 +106,7 @@ $(document).ready(function(e) {
 		setTimeoffline();
 	});
 
-	var dust = firebase.database().ref().child("dust");
+	/*var dust = firebase.database().ref().child("dust");
 	dust.on("child_added", function(sanp) {
 		if (!newItems) return;
 		var row = sanp.val();
@@ -113,16 +116,16 @@ $(document).ready(function(e) {
 		chart.options.data[1].dataPoints.push({x: row.time, y: row.pm25});
 		chart.options.data[2].dataPoints.push({x: row.time, y: row.pm10});
 		chart.render();
-		$("#pm1 > .content").text(row.pm1 + " ug/m3");
-		$("#pm25 > .content").text(row.pm25 + " ug/m3");
-		$("#pm10 > .content").text(row.pm10 + " ug/m3");
+		$("#pm1").text(row.pm1 + " ug/m3");
+		$("#pm25").text(row.pm25 + " ug/m3");
+		$("#pm10").text(row.pm10 + " ug/m3");
 		
 		
 		$("#status").removeClass("success").addClass("danger");
 		$("#status > .content").text("Updating...");
 		
 		setTimeoffline();
-	});
+	});*/
 	
 	var now = new Date();
 	logDHT.orderByChild("time").startAt(now.getFullYear() + "-" + (now.getMonth() + 1) + "-" + now.getDate()).once("value", function(sanp) {
@@ -141,6 +144,9 @@ $(document).ready(function(e) {
 		var Arow = lastRows;
 		$("#temperature > .content").html(Arow.temperature + " &deg;C");
 		$("#humidity > .content").text(Arow.humidity + " %");
+		$("#pm1").text(row.pm1 + " ug/m3");
+		$("#pm25").text(row.pm25 + " ug/m3");
+		$("#pm10").text(row.pm10 + " ug/m3");
 		
 		var now = new Date();
 		Arow.time = new Date(Arow.time);
@@ -171,9 +177,9 @@ $(document).ready(function(e) {
 		chart.render();
 		
 		var Arow = lastRows;
-		$("#pm1 > .content").text(row.pm1 + " ug/m3");
-		$("#pm25 > .content").text(row.pm25 + " ug/m3");
-		$("#pm10 > .content").text(row.pm10 + " ug/m3");
+		$("#pm1").text(row.pm1 + " ug/m3");
+		$("#pm25").text(row.pm25 + " ug/m3");
+		$("#pm10").text(row.pm10 + " ug/m3");
 		//$("#update_time > .content").text(now.getFullYear() + "-" + (now.getMonth() + 1) + "-" + now.getDate() + "-" + now.getTime());
 
 	});
