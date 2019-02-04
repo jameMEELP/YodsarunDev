@@ -25,11 +25,36 @@
 <script src="js/bootstrap.min.js"></script>
 <script src="js/material.min.js"></script>
 <script src="js/ripples.min.js"></script>
-
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <!-- Animate.css -->
 <link rel="stylesheet" href="css/animate.min.css">
 
 <script>
+	google.charts.load('current', {'packages':['gauge']});
+    google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Label', 'Value'],
+          ['PM 2.5', 80],
+          ['PM 10', 55],
+          ['PM 1', 68]
+        ]);
+
+        var options = {
+          width: 400, height: 120,
+          redFrom: 90, redTo: 100,
+          yellowFrom:75, yellowTo: 90,
+          minorTicks: 5
+        };
+
+        var chart = new google.visualization.Gauge(document.getElementById('chart_div'));
+
+        chart.draw(data, options);
+}
+
+
 var chart, toOffline;
 var newItems = false;
 // Initialize Firebase
@@ -345,5 +370,6 @@ var setTimeoffline = function() {
 	 <center>
 		 <div class="dialog success fadeIn animated" class="content" id="update_time"></div> 
 	</center>
+	<div id="chart_div" style="width: 400px; height: 120px;"></div>
 </footer>
 </html>
