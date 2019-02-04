@@ -172,6 +172,16 @@ $(document).ready(function(e) {
 		$("#pm25 > .content").html(row.pm25 + " ug/m3");
 		$("#pm1 > .content").html(row.pm1 + " ug/m3");
 		$("#pm10 > .content").html(row.pm10 + " ug/m3");
+
+		var now = new Date();
+		Arow.time = new Date(Arow.time);
+		if (Math.round(now) -  Math.round(Arow.time) < (2 * 60 * 1000)) {
+			$("#status").removeClass("success").addClass("danger");
+			$("#status > .content").text("Updating..");
+		} else {
+			$("#status").removeClass("danger").addClass("success");
+			$("#status > .content").text("Up to date");
+		}
 		
 		setTimeoffline();
 	});
@@ -292,7 +302,8 @@ var setTimeoffline = function() {
         <div id="chartContainer" style="height: 300px; width: 100%;"></div>
       </div>
 		</div>
-		<div class="text" ><center>Last update at </center></div>
+		
   </div>
+  <div class="text" ><center>Last update at </center></div>
 </body>
 </html>
