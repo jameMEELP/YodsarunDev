@@ -126,10 +126,10 @@ $(document).ready(function(e) {
 		var Arow = lastRows;
 		$("#temperature > .content").html(Arow.temperature + " &deg;C");
 		$("#humidity > .content").text(Arow.humidity + " %");
-		// $("#pm1 > .content").text(row.pm1 + " ug/m3");
-	 	// $("#pm25 > .content").text(row.pm25 + " ug/m3");
-	 	// $("#pm10 > .content").text(row.pm10 + " ug/m3");
-		// $('#update_time').text(now.getFullYear() + "-" + (now.getMonth() + 1) + "-" + now.getDate() + "  " + now.getHours() +":" + now.getMinutes() +":" + now.getSeconds());
+		$("#pm1 > .content").text(row.pm1 + " ug/m3");
+	 	$("#pm25 > .content").text(row.pm25 + " ug/m3");
+	 	$("#pm10 > .content").text(row.pm10 + " ug/m3");
+		$('#update_time').text(now.getFullYear() + "-" + (now.getMonth() + 1) + "-" + now.getDate() + "  " + now.getHours() +":" + now.getMinutes() +":" + now.getSeconds());
 	
 		var now = new Date();
 		Arow.time = new Date(Arow.time);
@@ -140,7 +140,51 @@ $(document).ready(function(e) {
 			$("#status").removeClass("danger").addClass("success");
 			$("#status > .content").text("Up to date");
 		}
-		
+
+		if(row.pm25 >=0 && row.pm25 <=25)
+		{
+			$("#pm25").removeClass("success").addClass("verygood");
+		}
+		else if(row.pm25 >=26 && row.pm25 <=37)
+		{
+			$("#pm25").removeClass("success").addClass("good");
+		}
+		else if(row.pm25 >=38 && row.pm25 <=50)
+		{
+			$("#pm25").removeClass("success").addClass("mediam");
+		}
+		else if(row.pm25 >=51 && row.pm25 <=90)
+		{
+			$("#pm25").removeClass("success").addClass("bad");
+		}
+		else if(row.pm25 > 90)
+		{
+			$("#pm25").removeClass("success").addClass("verybad");
+		}
+
+		////////////////////////////////////////////////////////////////////////////////////////////////////
+		if(row.pm10 >=0 && row.pm10 <=50)
+		{
+			$("#pm10").removeClass("success").addClass("verygood");
+		}
+		else if(row.pm10 >=51 && row.pm10 <=80)
+		{
+			$("#pm10").removeClass("success").addClass("good");
+		}
+		else if(row.pm10 >=81 && row.pm10 <=120)
+		{
+			$("#pm10").removeClass("success").addClass("mediam");
+		}
+		else if(row.pm10 >=121 && row.pm10 <=180)
+		{
+			$("#pm10").removeClass("success").addClass("bad");
+		}
+		else if(row.pm10 > 180)
+		{
+			$("#pm10").removeClass("success").addClass("verybad");
+		}
+
+
 		setTimeoffline();
 	});
 
@@ -241,6 +285,24 @@ var setTimeoffline = function() {
 .dialog.danger > .content {
 	background: #f44336;
 }
+
+.dialog.verygood > .content {
+	background: #1cc1f3;
+}
+.dialog.good > .content {
+	background: #4fa535;
+}
+.dialog.mediam > .content {
+	background: #f3ef1c;
+}
+.dialog.bad > .content {
+	background: #ec940f;
+}
+.dialog.verybad > .content {
+	background: #ec0f0f;
+}
+
+
 .dialog > .title {
 	background: #FFF;
 	border-radius: 0 0 6px 6px;
