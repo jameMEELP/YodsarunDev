@@ -97,8 +97,8 @@ $(document).ready(function(e) {
 		$("#humidity > .content").text(row.humidity + " %");
 		
 		
-		$("#status").removeClass("danger").addClass("success");
-		$("#status > .content").text("Up to date");
+		$("#status").removeClass("success").addClass("danger");
+		$("#status > .content").text("Updating...");
 		
 		setTimeoffline();
 	});
@@ -120,6 +120,9 @@ $(document).ready(function(e) {
 		var Arow = lastRows;
 		$("#temperature > .content").html(Arow.temperature + " &deg;C");
 		$("#humidity > .content").text(Arow.humidity + " %");
+		$("#pm25 > .content").html(Arow.pm25 + " ug/m3");
+		$("#pm1 > .content").text(Arow.pm1 + " ug/m3");
+		$("#pm10 > .content").text(Arow.pm10 + " ug/m3");
 		
 		var now = new Date();
 		Arow.time = new Date(Arow.time);
@@ -225,7 +228,7 @@ var setTimeoffline = function() {
              </div>
 					 </div>
 					<div class="col-sm-4">
-						<div class="dialog success fadeIn animated" id="time">
+						<div class="dialog success fadeIn animated" id="pm25">
 							<div class="content">00.00 ug/m3</div>
 							<div class="title">PM 2.5</div>
 						</div>
@@ -247,7 +250,8 @@ var setTimeoffline = function() {
       <div role="tabpanel" class="tab-pane" id="history">
         <div id="chartContainer" style="height: 300px; width: 100%;"></div>
       </div>
-    </div>
+		</div>
+		<div class="text">Last Update </div>
   </div>
 </body>
 </html>
