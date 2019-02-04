@@ -64,6 +64,7 @@ $(document).ready(function(e) {
 				content += "<strong>PM1</strong>: " + e.entries[2].dataPoint.y + " ug/m3";
 				content += "<strong>PM25</strong>: " + e.entries[3].dataPoint.y + " ug/m3";
 				content += "<strong>PM10</strong>: " + e.entries[4].dataPoint.y + " ug/m3";
+				content += "<strong>time</strong>: " + e.entries[5].dataPoint.y ;
 
 				return content;
 			}
@@ -100,7 +101,7 @@ $(document).ready(function(e) {
 		$("#pm1 > .content").html(row.pm1 + " ug/m3");
 	 	$("#pm25 > .content").html(row.pm25 + " ug/m3");
 	 	$("#pm10 > .content").html(row.pm10 + " ug/m3");
-		$('#update_time').text(row.time);
+		$('#update_time').html(row.time);
 		
 		$("#status").removeClass("success").addClass("danger");
 		$("#status > .content").text("Updating...");
@@ -378,6 +379,6 @@ var setTimeoffline = function() {
 		</div>
 		
   </div>
-  <div class="dialog success fadeIn animated" class="content"><center>Last update at <div id="update_time"></div></center></div>
+  <div class="dialog success fadeIn animated" class="content" id="update_time"><center>Last update at : </center></div>
 </body>
 </html>
