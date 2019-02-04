@@ -80,9 +80,9 @@ $(document).ready(function(e) {
 	
 	firebase.initializeApp(config);
 		
-	var TandH = firebase.database().ref().child("TandH");
+	var logDHT = firebase.database().ref().child("logDHT");
 		
-	TandH.on("child_added", function(sanp) {
+	logDHT.on("child_added", function(sanp) {
 		if (!newItems) return;
 		var row = sanp.val();
 		
@@ -101,7 +101,7 @@ $(document).ready(function(e) {
 	});
 	
 	var now = new Date();
-	TandH.orderByChild("time").startAt(now.getFullYear() + "-" + (now.getMonth() + 1) + "-" + now.getDate()).once("value", function(sanp) {
+	logDHT.orderByChild("time").startAt(now.getFullYear() + "-" + (now.getMonth() + 1) + "-" + now.getDate()).once("value", function(sanp) {
 		console.log(sanp);
 		newItems = true;
 		var dataRows = sanp.val();
