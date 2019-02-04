@@ -94,9 +94,11 @@ $(document).ready(function(e) {
 		
 		$("#temperature > .content").html(row.temperature + " &deg;C");
 		$("#humidity > .content").text(row.humidity + " %");
+		$('#update_time > .content').text(now.getFullYear() + "-" + (now.getMonth() + 1) + "-" + now.getDate() + "  " + now.getTime());
 		
 		$("#status").removeClass("success").addClass("danger");
 		$("#status > .content").text("Updating...");
+		
 		
 		setTimeoffline();
 	});
@@ -172,7 +174,7 @@ $(document).ready(function(e) {
 		$("#pm1 > .content").text(row.pm1 + " ug/m3");
 		$("#pm25 > .content").text(row.pm25 + " ug/m3");
 		$("#pm10 > .content").text(row.pm10 + " ug/m3");
-		$("#update_time > .content").text(now.getFullYear() + "-" + (now.getMonth() + 1) + "-" + now.getDate() + "-" + now.getTime());
+		//$("#update_time > .content").text(now.getFullYear() + "-" + (now.getMonth() + 1) + "-" + now.getDate() + "-" + now.getTime());
 
 	});
 
