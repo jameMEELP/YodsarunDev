@@ -95,7 +95,7 @@ $(document).ready(function(e) {
 		$("#humidity > .content").text(row.humidity + " %");
 		
 		$("#status").removeClass("danger").addClass("success");
-		$("#status > .content").text("Updating2..");
+		$("#status > .content").text("Up to date");
 		
 		setTimeoffline();
 	});
@@ -122,10 +122,10 @@ $(document).ready(function(e) {
 		Arow.time = new Date(Arow.time);
 		if (Math.round(now) -  Math.round(Arow.time) < (2 * 60 * 1000)) {
 			$("#status").removeClass("success").addClass("danger");
-			$("#status > .content").text("Up to date");
+			$("#status > .content").text("Updating..");
 		} else {
 			$("#status").removeClass("danger").addClass("success");
-			$("#status > .content").text("Updating1..");
+			$("#status > .content").text("Up to date");
 		}
 		
 		setTimeoffline();
