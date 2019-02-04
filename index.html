@@ -112,7 +112,7 @@ $(document).ready(function(e) {
 		chart.options.data[2].dataPoints.push({x: row.time, y: row.pm10});
 		chart.render();
 		$("#pm25 > .content").html(row.pm25 + " ug/m3");
-		$("#pm1 > .content").text(row.pm1 + " ug/m3");
+		$("#pm1 > .content").html(row.pm1 + " ug/m3");
 		$("#pm10 > .content").html(row.pm10 + " ug/m3");
 		
 		
@@ -170,7 +170,7 @@ $(document).ready(function(e) {
 		
 		var Arow = lastRows;
 		$("#pm25 > .content").html(row.pm25 + " ug/m3");
-		$("#pm1 > .content").text(row.pm1 + " ug/m3");
+		$("#pm1 > .content").html(row.pm1 + " ug/m3");
 		$("#pm10 > .content").html(row.pm10 + " ug/m3");
 		
 		setTimeoffline();
@@ -269,19 +269,19 @@ var setTimeoffline = function() {
              </div>
 			</div>
 			<div class="col-sm-4">
-				<div class="dialog success fadeIn animated" id="status">
+				<div class="dialog success fadeIn animated" id="pm1">
 				  <div class="content">???</div>
 				  <div class="title">Node 1</div>
 				</div>
 			</div>
 			<div class="col-sm-4">
-				<div class="dialog success fadeIn animated" id="status">
+				<div class="dialog success fadeIn animated" id="pm25">
 				  <div class="content">???</div>
 				  <div class="title">Node 1</div>
 				</div>
 			</div>
 			<div class="col-sm-4">
-				<div class="dialog success fadeIn animated" id="status">
+				<div class="dialog success fadeIn animated" id="pm10">
 				  <div class="content">???</div>
 				  <div class="title">Node 1</div>
 				</div>
