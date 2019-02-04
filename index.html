@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Temperature &amp; Humidity Dashboard | Firebase + ESP8266 </title>
+<title>Temperature &amp; Dust Detector Dashboard | Yodsarun </title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- jQuery -->
@@ -95,7 +95,7 @@ $(document).ready(function(e) {
 		$("#humidity > .content").text(row.humidity + " %");
 		
 		$("#status").removeClass("danger").addClass("success");
-		$("#status > .content").text("ONLINE");
+		$("#status > .content").text("Updating");
 		
 		setTimeoffline();
 	});
@@ -122,10 +122,10 @@ $(document).ready(function(e) {
 		Arow.time = new Date(Arow.time);
 		if (Math.round(now) -  Math.round(Arow.time) < (2 * 60 * 1000)) {
 			$("#status").removeClass("danger").addClass("success");
-			$("#status > .content").text("ONLINE");
+			$("#status > .content").text("Updating");
 		} else {
 			$("#status").removeClass("success").addClass("danger");
-			$("#status > .content").text("OFFLINE");
+			$("#status > .content").text("Updated");
 		}
 		
 		setTimeoffline();
