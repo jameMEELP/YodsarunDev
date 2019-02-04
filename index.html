@@ -122,10 +122,10 @@ $(document).ready(function(e) {
 		Arow.time = new Date(Arow.time);
 		if (Math.round(now) -  Math.round(Arow.time) < (2 * 60 * 1000)) {
 			$("#status").removeClass("success").addClass("danger");
-			$("#status > .content").text("Updating");
+			$("#status > .content").text("Updated");
 		} else {
 			$("#status").removeClass("danger").addClass("success");
-			$("#status > .content").text("Updatied");
+			$("#status > .content").text("Updating");
 		}
 		
 		setTimeoffline();
