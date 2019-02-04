@@ -169,9 +169,9 @@ $(document).ready(function(e) {
 		chart.render();
 		
 		var Arow = lastRows;
-		$("#pm25 > .content").text(row.pm25 + " ug/m3");
-		$("#pm1 > .content").text(row.pm1 + " ug/m3");
-		$("#pm10 > .content").text(row.pm10 + " ug/m3");
+		$("#pm25 > .content").html(row.pm25 + " ug/m3");
+		$("#pm1 > .content").html(row.pm1 + " ug/m3");
+		$("#pm10 > .content").html(row.pm10 + " ug/m3");
 
 		var now = new Date();
 		Arow.time = new Date(Arow.time);
