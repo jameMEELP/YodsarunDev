@@ -61,6 +61,7 @@ $(document).ready(function(e) {
 				var content = CanvasJS.formatDate(e.entries[0].dataPoint.x, "HH:mm:ss") + "<br>";
 				content += "<strong>Temperature</strong>: " + e.entries[0].dataPoint.y + " &deg;C<br>";
 				content += "<strong>Humidity</strong>: " + e.entries[1].dataPoint.y + " %";
+
 				return content;
 			}
 		},
@@ -94,8 +95,9 @@ $(document).ready(function(e) {
 		$("#temperature > .content").html(row.temperature + " &deg;C");
 		$("#humidity > .content").text(row.humidity + " %");
 		
+		
 		$("#status").removeClass("danger").addClass("success");
-		$("#status > .content").text("Up to date2");
+		$("#status > .content").text("Up to date");
 		
 		setTimeoffline();
 	});
@@ -125,7 +127,7 @@ $(document).ready(function(e) {
 			$("#status > .content").text("Updating..");
 		} else {
 			$("#status").removeClass("danger").addClass("success");
-			$("#status > .content").text("Up to date1");
+			$("#status > .content").text("Up to date");
 		}
 		
 		setTimeoffline();
@@ -220,7 +222,25 @@ var setTimeoffline = function() {
                <div class="content">???</div>
                <div class="title">Node 1</div>
              </div>
-           </div>
+					 </div>
+					<div class="col-sm-4">
+						<div class="dialog success fadeIn animated" id="pm25">
+							<div class="content">00.00 ug/m3</div>
+							<div class="title">PM 2.5</div>
+						</div>
+					</div>
+					<div class="col-sm-4">
+						<div class="dialog success fadeIn animated" id="pm1">
+							<div class="content">00.00 ug/m3</div>
+							<div class="title">PM 1</div>
+						</div>
+					</div>
+					<div class="col-sm-4">
+						<div class="dialog success fadeIn animated" id="pm10">
+							<div class="content">00.00 ug/m3</div>
+							<div class="title">PM 10</div>
+						</div>
+					</div>
         </div>
       </div>
       <div role="tabpanel" class="tab-pane" id="history">
