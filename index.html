@@ -82,7 +82,6 @@ $(document).ready(function(e) {
 	firebase.initializeApp(config);
 		
 	var logDHT = firebase.database().ref().child("logDHT");
-	var Dust = firebase.database().ref().child("dust");
 		
 	logDHT.on("child_added", function(sanp) {
 		if (!newItems) return;
@@ -95,27 +94,6 @@ $(document).ready(function(e) {
 		
 		$("#temperature > .content").html(row.temperature + " &deg;C");
 		$("#humidity > .content").text(row.humidity + " %");
-		
-		
-		$("#status").removeClass("success").addClass("danger");
-		$("#status > .content").text("Updating...");
-		
-		setTimeoffline();
-	});
-
-	Dust.on("child_added", function(sanp) {
-		if (!newItems) return;
-		var row = sanp.val();
-		
-		row.time = new Date(row.time);
-		chart.options.data[0].dataPoints.push({x: row.time, y: row.pm25});
-		chart.options.data[1].dataPoints.push({x: row.time, y: row.pm10});
-		chart.options.data[2].dataPoints.push({x: row.time, y: row.pm1});
-		chart.render();
-		
-		$("#pm25 > .content").html(row.temperature + " ug/m3");
-		$("#pm1 > .content").text(row.humidity + " ug/m3");
-		$("#pm10 > .content").text(row.humidity + " ug/m3");
 		
 		
 		$("#status").removeClass("success").addClass("danger");
@@ -250,25 +228,7 @@ var setTimeoffline = function() {
                <div class="content">???</div>
                <div class="title">Node 1</div>
              </div>
-					 </div>
-					<div class="col-sm-4">
-						<div class="dialog success fadeIn animated" id="pm25">
-							<div class="content"></div>
-							<div class="title">PM 2.5</div>
-						</div>
-					</div>
-					<div class="col-sm-4">
-						<div class="dialog success fadeIn animated" id="pm1">
-							<div class="content"></div>
-							<div class="title">PM 1</div>
-						</div>
-					</div>
-					<div class="col-sm-4">
-						<div class="dialog success fadeIn animated" id="time">
-							<div class="content"></div>
-							<div class="title">PM 10</div>
-						</div>
-					</div>
+			</div>
         </div>
       </div>
       <div role="tabpanel" class="tab-pane" id="history">
