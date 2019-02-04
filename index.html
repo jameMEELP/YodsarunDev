@@ -25,7 +25,6 @@
 <script src="js/bootstrap.min.js"></script>
 <script src="js/material.min.js"></script>
 <script src="js/ripples.min.js"></script>
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <!-- Animate.css -->
 <link rel="stylesheet" href="css/animate.min.css">
 
@@ -118,34 +117,6 @@ $(document).ready(function(e) {
 			$("#status").removeClass("danger").addClass("success");
 			$("#status > .content").text("Up to date");
 		}
-
-
-		
-		google.charts.load('current', {'packages':['gauge']});
-    	google.charts.setOnLoadCallback(drawChart);
-
-      	function drawChart() {
-
-        var data = google.visualization.arrayToDataTable([
-          ['Label', 'Value'],
-          ['PM 2.5', row.pm25],
-          ['PM 10', row.pm10],
-          ['PM 1', row.pm1]
-        ]);
-
-        var options = {
-          width: 400, height: 120,
-          redFrom: 90, redTo: 100,
-          yellowFrom:75, yellowTo: 90,
-          minorTicks: 5
-        };
-
-        var chart = new google.visualization.Gauge(document.getElementById('chart_div'));
-
-        chart.draw(data, options);
-		}
-
-
 		setTimeoffline();
 	});
 
@@ -223,31 +194,7 @@ $(document).ready(function(e) {
 		{
 			$("#pm10").removeClass("success").addClass("verybad");
 		}
-		
-		google.charts.load('current', {'packages':['gauge']});
-    	google.charts.setOnLoadCallback(drawChart);
-
-      	function drawChart() {
-
-        var data = google.visualization.arrayToDataTable([
-          ['Label', 'Value'],
-          ['PM 2.5', Arow.pm25],
-          ['PM 10', Arow.pm10],
-          ['PM 1', Arow.pm1]
-        ]);
-
-        var options = {
-          width: 400, height: 120,
-          redFrom: 90, redTo: 100,
-          yellowFrom:75, yellowTo: 90,
-          minorTicks: 5
-        };
-
-        var chart = new google.visualization.Gauge(document.getElementById('chart_div'));
-
-        chart.draw(data, options);
-		}
-
+	
 		setTimeoffline();
 	});
 
@@ -382,12 +329,8 @@ var setTimeoffline = function() {
 				  <div class="title">PM 10</div>
 				</div>
 			</div>
-			<div class="col-sm-4">
-			<div id="chart_div" style="width: 400px; height: 120px;"></div>
-			</div>
 		</div>
-		<div role="tabpanel" class="tab-pane active" id="overview">
-				<div class="row">
+	
 					<div class="col-sm-4">
 		<center>
 		<img src=image/aqi.png width="40%" >
@@ -395,8 +338,6 @@ var setTimeoffline = function() {
 		<center>
 		 <div class="dialog success fadeIn animated" class="content" id="update_time"></div> 
 		</center>
-		</div>
-		</div>
 		</div>
       </div>
       <div role="tabpanel" class="tab-pane" id="history">
