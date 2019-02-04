@@ -121,10 +121,10 @@ $(document).ready(function(e) {
 		var now = new Date();
 		Arow.time = new Date(Arow.time);
 		if (Math.round(now) -  Math.round(Arow.time) < (2 * 60 * 1000)) {
-			$("#status").removeClass("success").addClass("danger");
+			$("#status").removeClass("danger").addClass("success");
 			$("#status > .content").text("Updated");
 		} else {
-			$("#status").removeClass("danger").addClass("success");
+			$("#status").removeClass("success").addClass("danger");
 			$("#status > .content").text("Updating");
 		}
 		
@@ -136,7 +136,7 @@ var setTimeoffline = function() {
 	if (typeof toOffline === "number") clearTimeout(toOffline);
 	
 	toOffline = setTimeout(function() {
-		$("#status").removeClass("danger").addClass("success");
+		$("#status").removeClass("success").addClass("danger");
 		$("#status > .content").text("Updated");
 	}, 2 * 60 * 1000);
 }
@@ -218,7 +218,7 @@ var setTimeoffline = function() {
            <div class="col-sm-4">
              <div class="dialog success fadeIn animated" id="status">
                <div class="content">???</div>
-               <div class="title">Time Update</div>
+               <div class="title">Node 1</div>
              </div>
            </div>
         </div>
