@@ -106,66 +106,6 @@ $(document).ready(function(e) {
 		$("#status").removeClass("success").addClass("danger");
 		$("#status > .content").text("Updating...");
 		
-		if (Math.round(now) -  Math.round(Arow.time) < (2 * 60 * 1000)) {
-			$("#status").removeClass("success").addClass("danger");
-			$("#status > .content").text("Updating..");
-		} else {
-			$("#status").removeClass("danger").addClass("success");
-			$("#status > .content").text("Up to date");
-		}
-
-		if(row.pm25 >=0 && row.pm25 <=25)
-		{
-			$("#qut25 > .qurity").text("Very Good");
-			$("#pm25").removeClass("success").addClass("verygood");
-		}
-		else if(row.pm25 >=26 && row.pm25 <=37)
-		{
-			$("#qut25 > .qurity").text("Good");
-			$("#pm25").removeClass("success").addClass("good");
-		}
-		else if(row.pm25 >=38 && row.pm25 <=50)
-		{
-			$("#qut25 > .qurity").text("Medium");
-			$("#pm25").removeClass("success").addClass("mediam");
-		}
-		else if(row.pm25 >=51 && row.pm25 <=90)
-		{
-			$("#qut25 > .qurity").text("Bad");
-			$("#pm25").removeClass("success").addClass("bad");
-		}
-		else if(row.pm25 > 90)
-		{
-			$("#qut25 > .qurity").text("Very Bad");
-			$("#pm25").removeClass("success").addClass("verybad");
-		}
-
-		////////////////////////////////////////////////////////////////////////////////////////////////////
-		if(row.pm10 >=0 && row.pm10 <=50)
-		{
-			$("#qut10 > .qurity").text("Very Good");
-			$("#pm10").removeClass("success").addClass("verygood");
-		}
-		else if(row.pm10 >=51 && row.pm10 <=80)
-		{
-			$("#qut10 > .qurity").text("Good");
-			$("#pm10").removeClass("success").addClass("good");
-		}
-		else if(row.pm10 >=81 && row.pm10 <=120)
-		{
-			$("#qut10 > .qurity").text("Medium");
-			$("#pm10").removeClass("success").addClass("mediam");
-		}
-		else if(row.pm10 >=121 && row.pm10 <=180)
-		{
-			$("#qut10 > .qurity").text("Bad");
-			$("#pm10").removeClass("success").addClass("bad");
-		}
-		else if(row.pm10 > 180)
-		{
-			$("#qut10 > .qurity").text("Very Bad");
-			$("#pm10").removeClass("success").addClass("verybad");
-		}
 		
 		setTimeoffline();
 	});
@@ -337,39 +277,6 @@ var setTimeoffline = function() {
 	color: rgba(70, 70, 70, 0.87);
 	text-align: center;
 }
-.dialog.primary > .content{
-	background: #00aa9a;
-}
-.dialog.success > .content {
-	background: #59b75c;
-}
-.dialog.info > .content {
-	background: #03a9f4;
-}
-.dialog.warning > .content {
-	background: #ff5722;
-}
-
-.dialog.danger > .content {
-	background: #f44336;
-}
-
-.dialog.verygood > .content {
-	background: #1cc1f3;
-}
-.dialog.good > .content {
-	background: #4fa535;
-}
-.dialog.mediam > .content {
-	background: #f3ef1c;
-}
-.dialog.bad > .content {
-	background: #ec940f;
-}
-.dialog.verybad > .content {
-	background: #ec0f0f;
-}
-
 .nav-tabs {
 	margin-bottom: 20px;
 }
@@ -412,20 +319,21 @@ var setTimeoffline = function() {
 			<div class="col-sm-4">
 				<div class="dialog success fadeIn animated" id="pm1">
 				  <div class="content">00.00 ug/m3</div>
+				  <div class="qurity">...</div>
 				  <div class="title">PM 1</div>
 				</div>
 			</div>
 			<div class="col-sm-4">
 				<div class="dialog success fadeIn animated" id="pm25">
-				  <div class="content">00.00 ug/m3 </div>
-				  <div class="qurity" id="qut25">...</div>
+				  <div class="content">00.00 ug/m3 <div class="qurity" id="qut25">...</div></div>
+				  
 				  <div class="title">PM 2.5</div>
 				</div>
 			</div>
 			<div class="col-sm-4">
 				<div class="dialog success fadeIn animated" id="pm10">
-				  <div class="content">00.00 ug/m3 </div>
-				  <div class="qurity" id="qut10">...</div>
+				  <div class="content">00.00 ug/m3 <div class="qurity" id="qut10">...</div></div>
+				  
 				  <div class="title">PM 10</div>
 				</div>
 			</div>
