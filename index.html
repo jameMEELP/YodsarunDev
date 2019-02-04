@@ -172,6 +172,7 @@ $(document).ready(function(e) {
 		$("#pm1 > .content").text(row.pm1 + " ug/m3");
 		$("#pm25 > .content").text(row.pm25 + " ug/m3");
 		$("#pm10 > .content").text(row.pm10 + " ug/m3");
+		$("#update_time > .content").text(now.getFullYear() + "-" + (now.getMonth() + 1) + "-" + now.getDate() + "-" + now.getTime());
 
 	});
 
@@ -293,6 +294,6 @@ var setTimeoffline = function() {
 		</div>
 		
   </div>
-  <div class="text" ><center>Last update at </center></div>
+  <div class="text" ><center>Last update at <div id="update_time"></div></center></div>
 </body>
 </html>
