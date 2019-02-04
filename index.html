@@ -30,29 +30,7 @@
 <link rel="stylesheet" href="css/animate.min.css">
 
 <script>
-	google.charts.load('current', {'packages':['gauge']});
-    google.charts.setOnLoadCallback(drawChart);
-
-      function drawChart() {
-
-        var data = google.visualization.arrayToDataTable([
-          ['Label', 'Value'],
-          ['PM 2.5', 80],
-          ['PM 10', 55],
-          ['PM 1', 68]
-        ]);
-
-        var options = {
-          width: 400, height: 120,
-          redFrom: 90, redTo: 100,
-          yellowFrom:75, yellowTo: 90,
-          minorTicks: 5
-        };
-
-        var chart = new google.visualization.Gauge(document.getElementById('chart_div'));
-
-        chart.draw(data, options);
-}
+	
 
 
 var chart, toOffline;
@@ -140,6 +118,34 @@ $(document).ready(function(e) {
 			$("#status").removeClass("danger").addClass("success");
 			$("#status > .content").text("Up to date");
 		}
+
+
+		
+		google.charts.load('current', {'packages':['gauge']});
+    	google.charts.setOnLoadCallback(drawChart);
+
+      	function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Label', 'Value'],
+          ['PM 2.5', row.pm25],
+          ['PM 10', row.pm10],
+          ['PM 1', row.pm1]
+        ]);
+
+        var options = {
+          width: 400, height: 120,
+          redFrom: 90, redTo: 100,
+          yellowFrom:75, yellowTo: 90,
+          minorTicks: 5
+        };
+
+        var chart = new google.visualization.Gauge(document.getElementById('chart_div'));
+
+        chart.draw(data, options);
+		}
+
+
 		setTimeoffline();
 	});
 
@@ -217,7 +223,30 @@ $(document).ready(function(e) {
 		{
 			$("#pm10").removeClass("success").addClass("verybad");
 		}
+		
+		google.charts.load('current', {'packages':['gauge']});
+    	google.charts.setOnLoadCallback(drawChart);
 
+      	function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Label', 'Value'],
+          ['PM 2.5', Arow.pm25],
+          ['PM 10', Arow.pm10],
+          ['PM 1', Arow.pm1]
+        ]);
+
+        var options = {
+          width: 400, height: 120,
+          redFrom: 90, redTo: 100,
+          yellowFrom:75, yellowTo: 90,
+          minorTicks: 5
+        };
+
+        var chart = new google.visualization.Gauge(document.getElementById('chart_div'));
+
+        chart.draw(data, options);
+		}
 
 		setTimeoffline();
 	});
@@ -232,6 +261,8 @@ var setTimeoffline = function() {
 		$("#status > .content").text("Up to date");
 	}, 2 * 60 * 1000);
 }
+
+
 </script>
 
 <style>
