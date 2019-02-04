@@ -90,7 +90,12 @@ $(document).ready(function(e) {
 	var logDHT = firebase.database().ref().child("logDHT");
 		
 	logDHT.on("child_added", function(sanp) {
-		if (!newItems) return;
+		if (!newItems)
+		{
+			$("#status").removeClass("danger").addClass("success");
+			$("#status > .content").text("Up to date");
+			return;
+		} 
 		var row = sanp.val();
 		
 		row.time = new Date(row.time);
