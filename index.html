@@ -121,10 +121,10 @@ $(document).ready(function(e) {
 		var now = new Date();
 		Arow.time = new Date(Arow.time);
 		if (Math.round(now) -  Math.round(Arow.time) < (2 * 60 * 1000)) {
-			$("#status").removeClass("danger").addClass("success");
+			$("#status").removeClass("success").addClass("danger");
 			$("#status > .content").text("Up to date");
 		} else {
-			$("#status").removeClass("success").addClass("danger");
+			$("#status").removeClass("danger").addClass("success");
 			$("#status > .content").text("Updating..");
 		}
 		
@@ -136,8 +136,8 @@ var setTimeoffline = function() {
 	if (typeof toOffline === "number") clearTimeout(toOffline);
 	
 	toOffline = setTimeout(function() {
-		$("#status").removeClass("success").addClass("danger");
-		$("#status > .content").text("Updated");
+		$("#status").removeClass("danger").addClass("success");
+		$("#status > .content").text("Up to date");
 	}, 2 * 60 * 1000);
 }
 </script>
