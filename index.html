@@ -114,13 +114,13 @@ $(document).ready(function(e) {
 		$("#status > .content").text("Updating...");
 		
 		if (Math.round(now) -  Math.round(Arow.time) < (2 * 60 * 1000)) {
-			$("#status").removeClass("success").addClass("danger");
-			$("#status > .content").text("Updating..");
+			$("#status").removeClass("danger").addClass("success");
+			$("#status > .content").text("Up to date");
 			
 			
 		} else {
-			$("#status").removeClass("danger").addClass("success");
-			$("#status > .content").text("Up to date");
+			$("#status").removeClass("success").addClass("danger");
+			$("#status > .content").text("Updating");
 		}
 		setTimeoffline();
 	});
@@ -151,11 +151,11 @@ $(document).ready(function(e) {
 		var now = new Date();
 		Arow.time = new Date(Arow.time);
 		if (Math.round(now) -  Math.round(Arow.time) < (2 * 60 * 1000)) {
-			$("#status").removeClass("success").addClass("danger");
-			$("#status > .content").text("Updating..");
-		} else {
 			$("#status").removeClass("danger").addClass("success");
 			$("#status > .content").text("Up to date");
+		} else {
+			$("#status").removeClass("success").addClass("danger");
+			$("#status > .content").text("Updating...");
 		}
 
 		if(Arow.pm25 >=0 && Arow.pm25 <=25)
