@@ -112,9 +112,6 @@ $(document).ready(function(e) {
 			row.time = new Date(row.time);
 			chart.options.data[0].dataPoints.push({x: row.time, y: row.temperature});
 			chart.options.data[1].dataPoints.push({x: row.time, y: row.humidity});
-			chart.options.data[2].dataPoints.push({x: row.time, y: row.pm1});
-			chart.options.data[3].dataPoints.push({x: row.time, y: row.pm25});
-			chart.options.data[4].dataPoints.push({x: row.time, y: row.pm10});
 			 lastRows = row;
 		});
 		chart.render();
@@ -122,9 +119,6 @@ $(document).ready(function(e) {
 		var Arow = lastRows;
 		$("#temperature > .content").html(Arow.temperature + " &deg;C");
 		$("#humidity > .content").text(Arow.humidity + " %");
-		$("#pm25 > .content").html(Arow.pm25 + " ug/m3");
-		$("#pm1 > .content").text(Arow.pm1 + " ug/m3");
-		$("#pm10 > .content").text(Arow.pm10 + " ug/m3");
 		
 		var now = new Date();
 		Arow.time = new Date(Arow.time);
