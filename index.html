@@ -102,6 +102,27 @@ $(document).ready(function(e) {
 		
 		setTimeoffline();
 	});
+
+	Dust.on("child_added", function(sanp) {
+		if (!newItems) return;
+		var row = sanp.val();
+		
+		row.time = new Date(row.time);
+		chart.options.data[0].dataPoints.push({x: row.time, y: row.pm25});
+		chart.options.data[1].dataPoints.push({x: row.time, y: row.pm10});
+		chart.options.data[2].dataPoints.push({x: row.time, y: row.pm1});
+		chart.render();
+		
+		$("#pm25 > .content").html(row.temperature + " ug/m3");
+		$("#pm1 > .content").text(row.humidity + " ug/m3");
+		$("#pm10 > .content").text(row.humidity + " ug/m3");
+		
+		
+		$("#status").removeClass("success").addClass("danger");
+		$("#status > .content").text("Updating...");
+		
+		setTimeoffline();
+	});
 	
 	var now = new Date();
 	logDHT.orderByChild("time").startAt(now.getFullYear() + "-" + (now.getMonth() + 1) + "-" + now.getDate()).once("value", function(sanp) {
@@ -113,6 +134,9 @@ $(document).ready(function(e) {
 			row.time = new Date(row.time);
 			chart.options.data[0].dataPoints.push({x: row.time, y: row.temperature});
 			chart.options.data[1].dataPoints.push({x: row.time, y: row.humidity});
+			chart.options.data[2].dataPoints.push({x: row.time, y: row.pm1});
+			chart.options.data[3].dataPoints.push({x: row.time, y: row.pm25});
+			chart.options.data[4].dataPoints.push({x: row.time, y: row.pm10});
 			 lastRows = row;
 		});
 		chart.render();
