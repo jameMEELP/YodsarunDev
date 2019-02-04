@@ -97,10 +97,10 @@ $(document).ready(function(e) {
 		
 		$("#temperature > .content").html(row.temperature + " &deg;C");
 		$("#humidity > .content").text(row.humidity + " %");
-		// $("#pm1 > .content").text(row.pm1 + " ug/m3");
-	 	// $("#pm25 > .content").text(row.pm25 + " ug/m3");
-	 	// $("#pm10 > .content").text(row.pm10 + " ug/m3");
-		// $('#update_time').text(now.getFullYear() + "-" + (now.getMonth() + 1) + "-" + now.getDate() + "  " + now.getHours() +":" + now.getMinutes() +":" + now.getSeconds());
+		$("#pm1 > .content").text(row.pm1 + " ug/m3");
+	 	$("#pm25 > .content").text(row.pm25 + " ug/m3");
+	 	$("#pm10 > .content").text(row.pm10 + " ug/m3");
+		$('#update_time').text(now.getFullYear() + "-" + (now.getMonth() + 1) + "-" + now.getDate() + "  " + now.getHours() +":" + now.getMinutes() +":" + now.getSeconds());
 		
 		$("#status").removeClass("success").addClass("danger");
 		$("#status > .content").text("Updating...");
