@@ -110,7 +110,7 @@ $(document).ready(function(e) {
 		chart.options.data[1].dataPoints.push({x: row.time, y: row.humidity});
 		chart.render();
 		
-		$("#temperature > .content").html(row.temperature + " &deg;C");
+		$("#temperature > .loading").html(row.temperature + " &deg;C");
 		$("#humidity > .content").text(row.humidity + " %");
 		$("#pm1 > .content").html(row.pm1 + " ug/m3");
 	 	$("#pm25 > .content").html(row.pm25 + " ug/m3");
