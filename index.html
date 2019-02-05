@@ -115,7 +115,7 @@ $(document).ready(function(e) {
 		$("#pm1 > .content").html(row.pm1 + " ug/m3");
 	 	$("#pm25 > .content").html(row.pm25 + " ug/m3");
 	 	$("#pm10 > .content").html(row.pm10 + " ug/m3");
-		$('#update_time').html(row.time);
+		$('#update_time').html(row.tims);
 
 		$("#status").removeClass("danger").addClass("success");
 		$("#status > .content").text("Up to date");
@@ -153,7 +153,7 @@ $(document).ready(function(e) {
 		$("#pm1 > .content").html(Arow.pm1 + " ug/m3");
 	 	$("#pm25 > .content").html(Arow.pm25 + " ug/m3");
 	 	$("#pm10 > .content").html(Arow.pm10 + " ug/m3");
-		$('#update_time').html(Arow.time);
+		$('#update_time').html(Arow.tims);
 	
 		var now = new Date();
 		Arow.time = new Date(Arow.time);
