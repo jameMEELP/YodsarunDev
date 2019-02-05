@@ -157,13 +157,13 @@ $(document).ready(function(e) {
 	
 		var now = new Date();
 		Arow.time = new Date(Arow.time);
-		if (Math.round(now) -  Math.round(Arow.time) < (2 * 60 * 1000)) {
-			$("#status").removeClass("danger").addClass("success");
-			$("#status > .content").text("Up to date6");
-		} else {
-			$("#status").removeClass("success").addClass("danger");
-			$("#status > .content").text("Updating...7");
-		}
+		// if (Math.round(now) -  Math.round(Arow.time) < (2 * 60 * 1000)) {
+		// 	$("#status").removeClass("danger").addClass("success");
+		// 	$("#status > .content").text("Up to date6");
+		// } else {
+		// 	$("#status").removeClass("success").addClass("danger");
+		// 	$("#status > .content").text("Updating...7");
+		// }
 
 		if(Arow.pm25 >=0 && Arow.pm25 <=25)
 		{
