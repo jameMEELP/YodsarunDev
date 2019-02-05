@@ -225,7 +225,7 @@ var setTimeoffline = function() {   // ถ้าไม่มีการเช�
 	if (typeof toOffline === "number") clearTimeout(toOffline);
 	
 	toOffline = setTimeout(function() {
-		$("#status").removeClass("danger").addClass("success");
+		$("#status").addClass("success");
 		$("#status > .content").text("Up to date");
 	}, 2 * 60 * 1000);
 }
