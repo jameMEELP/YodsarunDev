@@ -110,20 +110,20 @@ $(document).ready(function(e) {
 		$("#pm1 > .content").html(row.pm1 + " ug/m3");
 	 	$("#pm25 > .content").html(row.pm25 + " ug/m3");
 	 	$("#pm10 > .content").html(row.pm10 + " ug/m3");
-		$('#update_time').text(now.getHours() +":"+ now.getMinutes() +":" + now.getSeconds() + "  " + now.getUTCFullYear() + "-" + now.getUTCMonth() +"-" + now.getUTCDate());
+		$('#update_time').html(now.getHours() +":"+ now.getMinutes() +":" + now.getSeconds() + "  " + now.getUTCFullYear() + "-" + now.getUTCMonth() +"-" + now.getUTCDate());
 
-		// $("#status").removeClass("danger").addClass("success");
-		// $("#status > .content").text("Up to date");
+		$("#status").removeClass("danger").addClass("success");
+		$("#status > .content").text("Up to date");
 		
-		// if (Math.round(now) -  Math.round(Arow.time) < (2 * 60 * 1000)) {
-		// 	$("#status").removeClass("danger").addClass("success");
-		// 	$("#status > .content").text("Up to date");
+		if (Math.round(now) -  Math.round(Arow.time) < (2 * 60 * 1000)) {
+			$("#status").removeClass("danger").addClass("success");
+			$("#status > .content").text("Up to date");
 			
 			
-		// } else {
-		// 	$("#status").removeClass("success").addClass("danger");
-		// 	$("#status > .content").text("Updating...");
-		// }
+		} else {
+			$("#status").removeClass("success").addClass("danger");
+			$("#status > .content").text("Updating...");
+		}
 		setTimeoffline();
 	});
 
@@ -148,17 +148,17 @@ $(document).ready(function(e) {
 		$("#pm1 > .content").html(Arow.pm1 + " ug/m3");
 	 	$("#pm25 > .content").html(Arow.pm25 + " ug/m3");
 	 	$("#pm10 > .content").html(Arow.pm10 + " ug/m3");
-		 $('#update_time').text(now.getHours() +":"+ now.getMinutes() +":" + now.getSeconds() + "  " + now.getUTCFullYear() + "-" + now.getUTCMonth() +"-" + now.getUTCDate());
+		$('#update_time').html(now.getHours() +":"+ now.getMinutes() +":" + now.getSeconds() + "  " + now.getUTCFullYear() + "-" + now.getUTCMonth() +"-" + now.getUTCDate());
 	
 		var now = new Date();
 		Arow.time = new Date(Arow.time);
-		// if (Math.round(now) -  Math.round(Arow.time) < (2 * 60 * 1000)) {
-		// 	$("#status").removeClass("danger").addClass("success");
-		// 	$("#status > .content").text("Up to date");
-		// } else {
-		// 	$("#status").removeClass("success").addClass("danger");
-		// 	$("#status > .content").text("Updating...");
-		// }
+		if (Math.round(now) -  Math.round(Arow.time) < (2 * 60 * 1000)) {
+			$("#status").removeClass("danger").addClass("success");
+			$("#status > .content").text("Up to date");
+		} else {
+			$("#status").removeClass("success").addClass("danger");
+			$("#status > .content").text("Updating...");
+		}
 
 		if(Arow.pm25 >=0 && Arow.pm25 <=25)
 		{
