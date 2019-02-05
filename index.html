@@ -93,14 +93,14 @@ $(document).ready(function(e) {
 		if (!newItems)
 		{
 			$("#status").removeClass("danger").addClass("success");
-			$("#status > .content").text("Up to date");
+			$("#status > .content").text("Up to date5");
 
 			return;
 		} 
 		else
 		{
 			$("#status").removeClass("success").addClass("danger");
-			$("#status > .content").text("Updating...");
+			$("#status > .content").text("Updating...4");
 
 		}
 		var row = sanp.val();
@@ -118,16 +118,16 @@ $(document).ready(function(e) {
 		$('#update_time').html(row.tims);
 
 		$("#status").removeClass("danger").addClass("success");
-		$("#status > .content").text("Up to date");
+		$("#status > .content").text("Up to date3");
 		
 		if (Math.round(now) -  Math.round(Arow.time) < (2 * 60 * 1000)) {
 			$("#status").removeClass("danger").addClass("success");
-			$("#status > .content").text("Up to date");
+			$("#status > .content").text("Up to date2");
 			
 			
 		} else {
 			$("#status").removeClass("success").addClass("danger");
-			$("#status > .content").text("Updating...");
+			$("#status > .content").text("Updating...1");
 		}
 		setTimeoffline();
 	});
@@ -159,10 +159,10 @@ $(document).ready(function(e) {
 		Arow.time = new Date(Arow.time);
 		if (Math.round(now) -  Math.round(Arow.time) < (2 * 60 * 1000)) {
 			$("#status").removeClass("danger").addClass("success");
-			$("#status > .content").text("Up to date");
+			$("#status > .content").text("Up to date6");
 		} else {
 			$("#status").removeClass("success").addClass("danger");
-			$("#status > .content").text("Updating...");
+			$("#status > .content").text("Updating...7");
 		}
 
 		if(Arow.pm25 >=0 && Arow.pm25 <=25)
