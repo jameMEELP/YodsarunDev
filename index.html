@@ -110,7 +110,7 @@ $(document).ready(function(e) {
 		$("#pm1 > .content").html(row.pm1 + " ug/m3");
 	 	$("#pm25 > .content").html(row.pm25 + " ug/m3");
 	 	$("#pm10 > .content").html(row.pm10 + " ug/m3");
-		$('#update_time').text(row.tims);
+		$('#update_time').html(row.tims);
 
 		$("#status").removeClass("danger").addClass("success");
 		$("#status > .content").text("Up to date");
@@ -149,7 +149,7 @@ $(document).ready(function(e) {
 		$("#pm1 > .content").html(Arow.pm1 + " ug/m3");
 	 	$("#pm25 > .content").html(Arow.pm25 + " ug/m3");
 	 	$("#pm10 > .content").html(Arow.pm10 + " ug/m3");
-		$('#update_time').text(Arow.tims);
+		$('#update_time').html(Arow.tims);
 	
 		var now = new Date();
 		Arow.time = new Date(Arow.time);
@@ -321,7 +321,7 @@ var setTimeoffline = function() {   // ถ้าไม่มีการเช�
              </div>
            </div>
            <div class="col-sm-4">
-             <div class="dialog success fadeIn animated" id="update_time">
+             <div class="dialog success fadeIn animated" id="status">
 			   <div class="content">loading..</div>
                <div class="title">Status</div>
              </div>
