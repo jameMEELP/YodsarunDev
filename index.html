@@ -183,10 +183,10 @@ $(document).ready(function(e) {
 
 		row.time = new Date(row.time);
 
-		chart2.options.data[0].dataPoints.push({x: row.time, y: row.pm1});
-		chart2.options.data[1].dataPoints.push({x: row.time, y: row.pm25});
-		chart2.options.data[2].dataPoints.push({x: row.time, y: row.pm10});
-		chart2.render();
+		// chart2.options.data[0].dataPoints.push({x: row.time, y: row.pm1});
+		// chart2.options.data[1].dataPoints.push({x: row.time, y: row.pm25});
+		// chart2.options.data[2].dataPoints.push({x: row.time, y: row.pm10});
+		// chart2.render();
 
 		chart.options.data[0].dataPoints.push({x: row.time, y: row.temperature});
 		chart.options.data[1].dataPoints.push({x: row.time, y: row.humidity});
@@ -271,13 +271,13 @@ $(document).ready(function(e) {
 			lastRows = row;
 		});
 		chart.render();
-		var length = chart2.options.data[0].dataPoints.length;
-		$.each(dataRows, function(index, row) {
-			chart2.options.data[0].dataPoints.push({x: row.time, y: row.pm1});
-			chart2.options.data[1].dataPoints.push({x: row.time, y: row.pm25});
-			chart2.options.data[2].dataPoints.push({x: row.time, y: row.pm10});
-		});
-		chart2.render();
+		// var length = chart2.options.data[0].dataPoints.length;
+		// $.each(dataRows, function(index, row) {
+		// 	chart2.options.data[0].dataPoints.push({x: row.time, y: row.pm1});
+		// 	chart2.options.data[1].dataPoints.push({x: row.time, y: row.pm25});
+		// 	chart2.options.data[2].dataPoints.push({x: row.time, y: row.pm10});
+		// });
+		// chart2.render();
 		
 		var Arow = lastRows;
 		$("#temperature > .content").html(Arow.temperature + " &deg;C");
@@ -587,7 +587,7 @@ td{
 				</div>
 				<br>
 				<br>
-				<center><div id="chartContainer2" style="height: 300px; width: 70%;"></div>
+				<!-- <center><div id="chartContainer2" style="height: 300px; width: 70%;"></div> -->
 				<br>
 				<div id="chartContainer" style="height: 300px; width: 70%;"></div></center>
       </div>
