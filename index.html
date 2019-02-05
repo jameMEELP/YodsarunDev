@@ -263,7 +263,7 @@ $(document).ready(function(e) {
 		console.log(sanp);
 		newItems = true;
 		var dataRows = sanp.val();
-		var lastRows = 0;
+		var lastRows2 = 0;
 		$.each(dataRows, function(index, row) {
 			row.time = new Date(row.time);
 			chart.options.data[0].dataPoints.push({x: row.time, y: row.temperature});
@@ -274,10 +274,9 @@ $(document).ready(function(e) {
 
 		$.each(dataRows, function(index, row) {
 			row.time = new Date(row.time);
-			chart2.options.data[0].dataPoints.push({x: row.time, y: row.pm1});
-			chart2.options.data[1].dataPoints.push({x: row.time, y: row.pm25});
-			chart2.options.data[2].dataPoints.push({x: row.time, y: row.pm10});
-			lastRows = row;
+			chart2.options.data[2].dataPoints.push({x: row.time, y: row.pm1});
+			chart2.options.data[3].dataPoints.push({x: row.time, y: row.pm25});
+			chart2.options.data[4].dataPoints.push({x: row.time, y: row.pm10});
 		});
 		char2.render();
 		
