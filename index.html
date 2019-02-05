@@ -180,8 +180,8 @@ $(document).ready(function(e) {
 			return;
 		} 
 		
-		var row = sanp.val();
-		
+		var row = 5;//sanp.val();
+
 		row.time = new Date(row.time);
 		chart.options.data[0].dataPoints.push({x: row.time, y: row.temperature});
 		chart.options.data[1].dataPoints.push({x: row.time, y: row.humidity});
@@ -260,7 +260,7 @@ $(document).ready(function(e) {
 	logDHT.orderByChild("time").startAt(now.getFullYear() + "-" + (now.getMonth() + 1) + "-" + now.getDate()).once("value", function(sanp) {
 		console.log(sanp);
 		newItems = true;
-		var dataRows = sanp.val();
+		var dataRows = 5;//sanp.val();
 		var lastRows = 0;
 		$.each(dataRows, function(index, row) {
 			row.time = new Date(row.time);
