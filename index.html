@@ -285,7 +285,7 @@ $(document).ready(function(e) {
 		$("#pm1 > .content").html(Arow.pm1 + " ug/m3");
 	 	$("#pm25 > .content").html(Arow.pm25 + " ug/m3");
 	 	$("#pm10 > .content").html(Arow.pm10 + " ug/m3");
-		$('#update_time').html("Last Update "+Arow.tims);
+		$('#update_time').html(Arow.tims);
 		$("#temperature").removeClass("loading").addClass("primary");
 		$("#humidity").removeClass("loading").addClass("info");
 		$("#pm1").removeClass("loading").addClass("pm1");
@@ -479,7 +479,6 @@ td{
   display: none;
 }
 
-
 </style>
 </head>
 
@@ -492,9 +491,8 @@ td{
     <ul class="nav nav-tabs" role="tablist">
       <li role="presentation" class="active"><a href="#overview" aria-controls="home" role="tab" data-toggle="tab">Overview</a></li>
       <li role="presentation"><a href="#history" aria-controls="profile" role="tab" data-toggle="tab">History</a></li>
-	</ul> 
-	
-	<center> <FONT SIZE=4 ><div><img src="image/refresh.png" width="38" height="38">Last Update <div id="update_time" class="content"> Loading...</FONT> </div></div></center>
+    </ul> 
+	<center>  <div><img src="image/refresh.png" width="38" height="38"><FONT SIZE=4 >  Last up date <div class="content" id="update_time">Loading...</div></FONT></div></center>
 	
 	<br>
     <!-- Tab panes -->
