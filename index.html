@@ -75,13 +75,22 @@ $(document).ready(function(e) {
 				return content;
 			}
 		},
+		legend:{
+		cursor:"pointer",
+		verticalAlign: "top",
+		horizontalAlign: "center",
+		dockInsidePlotArea: true,
+		itemclick: toogleDataSeries
+		},
 		animationEnabled: true,
 		data: [
 			{
+				showInLegend: true,
 				type: "spline", //change it to line, area, column, pie, etc
 				dataPoints: []
 			},
 			{
+				showInLegend: true,
 				type: "spline", //change it to line, area, column, pie, etc
 				dataPoints: []
 			}
