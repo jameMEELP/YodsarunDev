@@ -66,6 +66,8 @@ $(document).ready(function(e) {
 				content += "<strong>PM1</strong>: " + e.entries[2].dataPoint.y + " ug/m3";
 				content += "<strong>PM25</strong>: " + e.entries[3].dataPoint.y + " ug/m3";
 				content += "<strong>PM10</strong>: " + e.entries[4].dataPoint.y + " ug/m3";
+				content += "<strong>time</strong>: " + e.entries[5].dataPoint.y ;
+
 				return content;
 			}
 		},
@@ -100,31 +102,31 @@ $(document).ready(function(e) {
 			$("#status > .content").text("Updating...");
 		}
 		var row = sanp.val();
-		now = new Date(row.time)
+		
 		row.time = new Date(row.time);
 		chart.options.data[0].dataPoints.push({x: row.time, y: row.temperature});
 		chart.options.data[1].dataPoints.push({x: row.time, y: row.humidity});
 		chart.render();
+		
 		$("#temperature > .content").html(row.temperature + " &deg;C");
 		$("#humidity > .content").text(row.humidity + " %");
 		$("#pm1 > .content").html(row.pm1 + " ug/m3");
 	 	$("#pm25 > .content").html(row.pm25 + " ug/m3");
 	 	$("#pm10 > .content").html(row.pm10 + " ug/m3");
-		$('#update_time').html(row.time;
-			//now.getHours() +":"+ now.getMinutes() +":" + now.getSeconds() + "  " + now.getUTCFullYear() + "-" + now.getUTCMonth() +"-" + now.getUTCDate());
+		$('#update_time').html(row.time);
 
-		$("#status").removeClass("danger").addClass("success");
-		$("#status > .content").text("Up to date");
+		// $("#status").removeClass("danger").addClass("success");
+		// $("#status > .content").text("Up to date");
 		
-		if (Math.round(now) -  Math.round(Arow.time) < (2 * 60 * 1000)) {
-			$("#status").removeClass("danger").addClass("success");
-			$("#status > .content").text("Up to date");
+		// if (Math.round(now) -  Math.round(Arow.time) < (2 * 60 * 1000)) {
+		// 	$("#status").removeClass("danger").addClass("success");
+		// 	$("#status > .content").text("Up to date");
 			
 			
-		} else {
-			$("#status").removeClass("success").addClass("danger");
-			$("#status > .content").text("Updating...");
-		}
+		// } else {
+		// 	$("#status").removeClass("success").addClass("danger");
+		// 	$("#status > .content").text("Updating...");
+		// }
 		setTimeoffline();
 	});
 
@@ -149,7 +151,7 @@ $(document).ready(function(e) {
 		$("#pm1 > .content").html(Arow.pm1 + " ug/m3");
 	 	$("#pm25 > .content").html(Arow.pm25 + " ug/m3");
 	 	$("#pm10 > .content").html(Arow.pm10 + " ug/m3");
-		$('#update_time').html(row.time);
+		$('#update_time').html(Arow.time);
 	
 		var now = new Date();
 		Arow.time = new Date(Arow.time);
@@ -347,10 +349,9 @@ var setTimeoffline = function() {
 
 		<center>
 				<img src=image/aqi.png width="70%" >
-				  <div><FONT SIZE=4>Last up date</FONT></div>
-		</center>
-		<center>
-				<FONT SIZE=4><div class="dialog success fadeIn animated" class="content" id="update_time">loading...</div> </FONT>
+				  <div><FONT SIZE=4>Last up date</FONT></div></center>
+				<center>
+					<FONT SIZE=4><div class="dialog success fadeIn animated" class="content" id="update_time"></div> </FONT>
 		</center>
 
       </div>
