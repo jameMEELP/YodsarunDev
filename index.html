@@ -99,8 +99,7 @@ $(document).ready(function(e) {
 		} 
 		else{
 			$("#status").removeClass("success").addClass("danger");
-			$("#status > .content").text("Updating...cn");
-			delay(5000);
+			$("#status > .content").text("Up to date cn");
 		}
 
 		var row = sanp.val();
@@ -110,15 +109,15 @@ $(document).ready(function(e) {
 		chart.options.data[1].dataPoints.push({x: row.time, y: row.humidity});
 		chart.render();
 		
-		$("#temperature > .loading").html(row.temperature + " &deg;C");
+		$("#temperature > .content").html(row.temperature + " &deg;C");
 		$("#humidity > .content").text(row.humidity + " %");
 		$("#pm1 > .content").html(row.pm1 + " ug/m3");
 	 	$("#pm25 > .content").html(row.pm25 + " ug/m3");
 	 	$("#pm10 > .content").html(row.pm10 + " ug/m3");
 		$('#update_time').html(row.tims);
 
-		$("#status").removeClass("danger").addClass("success");
-		$("#status > .content").text("Up to date555");
+		// $("#status").removeClass("danger").addClass("success");
+		// $("#status > .content").text("Up to date555");
 		
 		if (Math.round(now) -  Math.round(Arow.time) < (2 * 60 * 1000)) {
 			$("#status").removeClass("danger").addClass("success");
