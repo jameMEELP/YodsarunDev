@@ -56,6 +56,8 @@ $(document).ready(function(e) {
 	$("#pm10").addClass("loading");
 
 	chart = new CanvasJS.Chart("chartContainer", {
+		animationEnabled: true,
+		exportEnabled: true,
 		title: {
 			text: "Temperature & Humidityhhh"
 		},
@@ -75,13 +77,20 @@ $(document).ready(function(e) {
 				return content;
 			}
 		},
+		legend:{
+			cursor:"pointer",
+			itemclick: toggleDataSeries
+		},
 		animationEnabled: true,
 		data: [
 			{
+				showInLegend: true,
+
 				type: "spline", //change it to line, area, column, pie, etc
 				dataPoints: []
 			},
 			{
+				showInLegend: true,
 				type: "spline", //change it to line, area, column, pie, etc
 				dataPoints: []
 			}
@@ -96,7 +105,7 @@ $(document).ready(function(e) {
 	window.onload = function () {
 	chart2 = new CanvasJS.Chart("chartContainer2", {
 	animationEnabled: true,
-	theme: "light2",
+	exportEnabled: true,
 	title:{
 		text: "PM 1 & PM 1 & PM 10"
 	},
@@ -119,9 +128,6 @@ $(document).ready(function(e) {
 	},  
 	legend:{
 		cursor:"pointer",
-		verticalAlign: "top",
-		horizontalAlign: "center",
-		dockInsidePlotArea: true,
 		itemclick: toogleDataSeries
 	},
 	data: [{
