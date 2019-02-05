@@ -56,8 +56,6 @@ $(document).ready(function(e) {
 	$("#pm10").addClass("loading");
 
 	chart = new CanvasJS.Chart("chartContainer", {
-		animationEnabled: true,
-		exportEnabled: true,
 		title: {
 			text: "Temperature & Humidityhhh"
 		},
@@ -77,21 +75,13 @@ $(document).ready(function(e) {
 				return content;
 			}
 		},
-		legend:{
-			cursor:"pointer",
-			itemclick: toggleDataSeries
-		},
 		animationEnabled: true,
 		data: [
 			{
-				showInLegend: true,
-				name: "Temperature",
 				type: "spline", //change it to line, area, column, pie, etc
 				dataPoints: []
 			},
 			{
-				showInLegend: true,
-				name: "Humidity",
 				type: "spline", //change it to line, area, column, pie, etc
 				dataPoints: []
 			}
@@ -106,7 +96,7 @@ $(document).ready(function(e) {
 	window.onload = function () {
 	chart2 = new CanvasJS.Chart("chartContainer2", {
 	animationEnabled: true,
-	exportEnabled: true,
+	theme: "light2",
 	title:{
 		text: "PM 1 & PM 1 & PM 10"
 	},
@@ -115,20 +105,24 @@ $(document).ready(function(e) {
 	},
 	axisY: {
 		title: "Number of Dust ug/m3",
-		suffix: " ug/m3"
+		prefix: "$",
+		suffix: "K"
 	},
 	toolTip:{
 		shared:true,
 		contentFormatter: function (e) {
 				var content = CanvasJS.formatDate(e.entries[0].dataPoint.x, "HH:mm:ss") + "<br>";
-				content += "<strong>PM 1</strong>: " + e.entries[0].dataPoint.y + " ug/m3 ";
-				content += "<strong>PM 2.5</strong>: " + e.entries[1].dataPoint.y + " ug/m3 ";
-				content += "<strong>PM 10</strong>: " + e.entries[2].dataPoint.y + " ug/m3 ";
+				content += "<strong>pm1</strong>: " + e.entries[0].dataPoint.y + " ug/m3 ";
+				content += "<strong>pm25</strong>: " + e.entries[1].dataPoint.y + " ug/m3 ";
+				content += "<strong>pm10</strong>: " + e.entries[2].dataPoint.y + " ug/m3 ";
 				return content;
 			}
 	},  
 	legend:{
 		cursor:"pointer",
+		verticalAlign: "top",
+		horizontalAlign: "center",
+		dockInsidePlotArea: true,
 		itemclick: toogleDataSeries
 	},
 	data: [{
