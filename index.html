@@ -93,16 +93,11 @@ $(document).ready(function(e) {
 		if (!newItems)
 		{
 			$("#status").removeClass("danger").addClass("success");
-			$("#status > .content").text("Up to date5");
+			$("#status > .content").text("Updating...");
 
 			return;
 		} 
-		else
-		{
-			$("#status").removeClass("success").addClass("danger");
-			$("#status > .content").text("Updating...4");
 
-		}
 		var row = sanp.val();
 		
 		row.time = new Date(row.time);
@@ -129,6 +124,7 @@ $(document).ready(function(e) {
 			$("#status").removeClass("success").addClass("danger");
 			$("#status > .content").text("Updating...1");
 		}
+
 		setTimeoffline();
 	});
 
