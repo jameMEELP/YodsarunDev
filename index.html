@@ -55,119 +55,119 @@ $(document).ready(function(e) {
 	$("#pm25").addClass("loading");
 	$("#pm10").addClass("loading");
 
-	// chart = new CanvasJS.Chart("chartContainer", {
-	// 	title: {
-	// 		text: "Temperature & Humidityhhh"
-	// 	},
-	// 	axisX:{  
-	// 		valueFormatString: "HH:mm"
-	// 	},
-	// 	axisY: {
-	// 		valueFormatString: "0.0#"
-	// 	},
-	// 	toolTip: {
-	// 		shared: true,
-	// 		contentFormatter: function (e) {
-	// 			var content = CanvasJS.formatDate(e.entries[0].dataPoint.x, "HH:mm:ss") + "<br>";
-	// 			content += "<strong>Temperature</strong>: " + e.entries[0].dataPoint.y + " &deg;C<br>";
-	// 			content += "<strong>Humidity</strong>: " + e.entries[1].dataPoint.y + " %";
-	// 			// content += "<strong>pm1</strong>: " + e.entries[2].dataPoint.y + " ug/m3";
-	// 			// content += "<strong>pm25</strong>: " + e.entries[3].dataPoint.y + " ug/m3";
-	// 			// content += "<strong>pm10</strong>: " + e.entries[4].dataPoint.y + " ug/m3";
-	// 			return content;
-	// 		}
-	// 	},
-	// 	animationEnabled: true,
-	// 	data: [
-	// 		{
-	// 			type: "spline", //change it to line, area, column, pie, etc
-	// 			dataPoints: []
-	// 		},
-	// 		{
-	// 			type: "spline", //change it to line, area, column, pie, etc
-	// 			dataPoints: []
-	// 		}
-	// 	]
-	// });
-	// chart.render();	
+	chart = new CanvasJS.Chart("chartContainer", {
+		title: {
+			text: "Temperature & Humidityhhh"
+		},
+		axisX:{  
+			valueFormatString: "HH:mm"
+		},
+		axisY: {
+			valueFormatString: "0.0#"
+		},
+		toolTip: {
+			shared: true,
+			contentFormatter: function (e) {
+				var content = CanvasJS.formatDate(e.entries[0].dataPoint.x, "HH:mm:ss") + "<br>";
+				content += "<strong>Temperature</strong>: " + e.entries[0].dataPoint.y + " &deg;C<br>";
+				content += "<strong>Humidity</strong>: " + e.entries[1].dataPoint.y + " %";
+				// content += "<strong>pm1</strong>: " + e.entries[2].dataPoint.y + " ug/m3";
+				// content += "<strong>pm25</strong>: " + e.entries[3].dataPoint.y + " ug/m3";
+				// content += "<strong>pm10</strong>: " + e.entries[4].dataPoint.y + " ug/m3";
+				return content;
+			}
+		},
+		animationEnabled: true,
+		data: [
+			{
+				type: "spline", //change it to line, area, column, pie, etc
+				dataPoints: []
+			},
+			{
+				type: "spline", //change it to line, area, column, pie, etc
+				dataPoints: []
+			}
+		]
+	});
+	chart.render();	
 
-	// window.onload = function () {
-	// chart2 = new CanvasJS.Chart("chartContainer2", {
-	// animationEnabled: true,
-	// theme: "light2",
-	// title:{
-	// 	text: "PM 1 & PM 1 & PM 10"
-	// },
-	// axisX:{
-	// 	valueFormatString: "HH:mm",
-	// 	crosshair: {
-	// 		enabled: true,
-	// 		snapToDataPoint: true
-	// 	}
-	// },
-	// axisY: {
-	// 	title: "Number of Pust ug/m3",
-	// 	crosshair: {
-	// 		enabled: true
+	window.onload = function () {
+	chart2 = new CanvasJS.Chart("chartContainer2", {
+	animationEnabled: true,
+	theme: "light2",
+	title:{
+		text: "PM 1 & PM 1 & PM 10"
+	},
+	axisX:{
+		valueFormatString: "HH:mm",
+		crosshair: {
+			enabled: true,
+			snapToDataPoint: true
+		}
+	},
+	axisY: {
+		title: "Number of Pust ug/m3",
+		crosshair: {
+			enabled: true
 			
-	// 	}
-	// },
-	// toolTip:{
-	// 	shared:true,
-	// 	contentFormatter: function (e) {
-	// 			var content = CanvasJS.formatDate(e.entries[0].dataPoint.x, "HH:mm:ss") + "<br>";
-	// 			content += "<strong>Temperature</strong>: " + e.entries[0].dataPoint.y + " &deg;C<br>";
-	// 			content += "<strong>Humidity</strong>: " + e.entries[1].dataPoint.y + " %";
-	// 			// content += "<strong>pm1</strong>: " + e.entries[2].dataPoint.y + " ug/m3";
-	// 			// content += "<strong>pm25</strong>: " + e.entries[3].dataPoint.y + " ug/m3";
-	// 			// content += "<strong>pm10</strong>: " + e.entries[4].dataPoint.y + " ug/m3";
-	// 			return content;
-	// 		}
-	// },  
-	// legend:{
-	// 	cursor:"pointer",
-	// 	verticalAlign: "bottom",
-	// 	horizontalAlign: "left",
-	// 	dockInsidePlotArea: true,
-	// 	itemclick: toogleDataSeries
-	// },
-	// data: [{
-	// 	type: "line",
-	// 	showInLegend: true,
-	// 	name: "PM 2.5",
-	// 	markerType: "square",
-	// 	xValueFormatString: "DD MMM, YYYY",
-	// 	color: "#F08080",
-	// 	dataPoints: []
-	// },
-	// {
-	// 	type: "line",
-	// 	showInLegend: true,
-	// 	name: "PM 10",
-	// 	lineDashType: "dash",
-	// 	color: "#F08080",
-	// 	dataPoints: []
-	// },
-	// {
-	// 	type: "line",
-	// 	showInLegend: true,
-	// 	name: "PM 1",
-	// 	lineDashType: "dash",
-	// 	color: "#F08080",
-	// 	dataPoints: []
-	// }]
-	// });
+		}
+	},
+	toolTip:{
+		shared:true,
+		contentFormatter: function (e) {
+				var content = CanvasJS.formatDate(e.entries[0].dataPoint.x, "HH:mm:ss") + "<br>";
+				content += "<strong>Temperature</strong>: " + e.entries[0].dataPoint.y + " &deg;C<br>";
+				content += "<strong>Humidity</strong>: " + e.entries[1].dataPoint.y + " %";
+				// content += "<strong>pm1</strong>: " + e.entries[2].dataPoint.y + " ug/m3";
+				// content += "<strong>pm25</strong>: " + e.entries[3].dataPoint.y + " ug/m3";
+				// content += "<strong>pm10</strong>: " + e.entries[4].dataPoint.y + " ug/m3";
+				return content;
+			}
+	},  
+	legend:{
+		cursor:"pointer",
+		verticalAlign: "bottom",
+		horizontalAlign: "left",
+		dockInsidePlotArea: true,
+		itemclick: toogleDataSeries
+	},
+	data: [{
+		type: "line",
+		showInLegend: true,
+		name: "PM 2.5",
+		markerType: "square",
+		xValueFormatString: "DD MMM, YYYY",
+		color: "#F08080",
+		dataPoints: []
+	},
+	{
+		type: "line",
+		showInLegend: true,
+		name: "PM 10",
+		lineDashType: "dash",
+		color: "#F08080",
+		dataPoints: []
+	},
+	{
+		type: "line",
+		showInLegend: true,
+		name: "PM 1",
+		lineDashType: "dash",
+		color: "#F08080",
+		dataPoints: []
+	}]
+	});
 
-	// chart2.render();
-	// function toogleDataSeries(e){
-	// 	if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
-	// 		e.dataSeries.visible = false;
-	// 	} else{
-	// 		e.dataSeries.visible = true;
-	// 	}
-	// 	chart2.render();
-	// }
-	// }
+	chart2.render();
+	function toogleDataSeries(e){
+		if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+			e.dataSeries.visible = false;
+		} else{
+			e.dataSeries.visible = true;
+		}
+		chart2.render();
+	}
+	}
 	
 	firebase.initializeApp(config);
 		
@@ -182,16 +182,16 @@ $(document).ready(function(e) {
 		} 
 		
 		var row = sanp.val();
-		// var length = chart2.options.data[0].dataPoints.length;
+		var length = chart2.options.data[0].dataPoints.length;
 		
 
 
 		row.time = new Date(row.time);
 
-		// chart2.options.data[0].dataPoints.push({x: row.time, y: row.pm1});
-		// chart2.options.data[1].dataPoints.push({x: row.time, y: row.pm25});
-		// chart2.options.data[2].dataPoints.push({x: row.time, y: row.pm10});
-		// chart2.render();
+		chart2.options.data[0].dataPoints.push({x: row.time, y: row.pm1});
+		chart2.options.data[1].dataPoints.push({x: row.time, y: row.pm25});
+		chart2.options.data[2].dataPoints.push({x: row.time, y: row.pm10});
+		chart2.render();
 
 		chart.options.data[0].dataPoints.push({x: row.time, y: row.temperature});
 		chart.options.data[1].dataPoints.push({x: row.time, y: row.humidity});
@@ -276,13 +276,14 @@ $(document).ready(function(e) {
 			lastRows = row;
 		});
 		chart.render();
-		// $.each(dataRows, function(index, row) {
-		// 	chart2.options.data[0].dataPoints.push({x: row.time, y: row.pm1});
-		// 	chart2.options.data[1].dataPoints.push({x: row.time, y: row.pm25});
-		// 	chart2.options.data[2].dataPoints.push({x: row.time, y: row.pm10});
-		// });
+		var length = chart2.options.data[0].dataPoints.length;
+		$.each(dataRows, function(index, row) {
+			chart2.options.data[0].dataPoints.push({x: row.time, y: row.pm1});
+			chart2.options.data[1].dataPoints.push({x: row.time, y: row.pm25});
+			chart2.options.data[2].dataPoints.push({x: row.time, y: row.pm10});
+		});
 		
-		// char2.render();
+		char2.render();
 		
 		var Arow = lastRows;
 		$("#temperature > .content").html(Arow.temperature + " &deg;C");
