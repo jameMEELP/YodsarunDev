@@ -304,7 +304,14 @@ var setTimeoffline = function() {   // ถ้าไม่มีการเช�
 	margin-bottom: 20px;
 }
 
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
 
+th, td {
+  padding: 15px;
+}
 </style>
 </head>
 
@@ -362,7 +369,27 @@ var setTimeoffline = function() {   // ถ้าไม่มีการเช�
 		</div>
 
 		<center>
-				<img src=image/aqi.png width="70%" >
+				<!-- <img src=image/aqi.png width="70%" > -->
+				<table style="width:100%">
+					<tr>
+					  <th>AQI</th>
+					  <th>PM 2.5</th> 
+					  <th>PM 1</th>
+					  <th>PM 10</th>
+					</tr>
+					<tr>
+					  <td>Jill</td>
+					  <td>Smith</td> 
+					  <td>50</td>
+					  <td>50</td>
+					</tr>
+					<tr>
+					  <td>Eve</td>
+					  <td>Jackson</td> 
+					  <td>94</td>
+					  <td>50</td>
+					</tr>
+				  </table>
 				  <div><FONT SIZE=4 >Last up date</FONT></div></center>
 				<center>
 					<FONT SIZE=4 ><div class="dialog success fadeIn animated" class="content" id="update_time">Loading...</div> </FONT>
