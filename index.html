@@ -282,8 +282,7 @@ $(document).ready(function(e) {
 			chart2.options.data[1].dataPoints.push({x: row.time, y: row.pm25});
 			chart2.options.data[2].dataPoints.push({x: row.time, y: row.pm10});
 		});
-		
-		char2.render();
+		chart2.render();
 		
 		var Arow = lastRows;
 		$("#temperature > .content").html(Arow.temperature + " &deg;C");
