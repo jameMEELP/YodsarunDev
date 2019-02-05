@@ -118,7 +118,7 @@ $(document).ready(function(e) {
 		$('#update_time').html(row.tims);
 
 		$("#status").removeClass("success").addClass("danger");
-		$("#status > .content").text("ีกำลังอัพเดทข้อมูล");
+		$("#status > .content").text("Updatng...");
 		
 		if (Math.round(now) -  Math.round(Arow.time) < (2 * 60 * 1000)) {
 			$("#status").removeClass("danger").addClass("success");
