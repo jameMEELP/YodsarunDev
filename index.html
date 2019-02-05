@@ -90,11 +90,6 @@ $(document).ready(function(e) {
 	var logDHT = firebase.database().ref().child("logDHT");
 		
 	logDHT.on("child_added", function(sanp) {
-		$("#temperature").removeClass("danger").addClass("loading");
-			$("#humidity").removeClass("danger").addClass("loading");
-			$("#pm1").removeClass("danger").addClass("loading");
-			$("#pm25").removeClass("danger").addClass("loading");
-			$("#pm10").removeClass("danger").addClass("loading");
 		if (!newItems)
 		{
 			$("#status").removeClass("danger").addClass("success");
