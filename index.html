@@ -112,9 +112,6 @@ $(document).ready(function(e) {
 	 	$("#pm10 > .content").html(row.pm10 + " ug/m3");
 		$('#update_time').html(row.tims);
 
-		$("#status").removeClass("danger").addClass("success");
-		$("#status > .content").text("Up to date");
-		
 		if (Math.round(now) -  Math.round(Arow.time) < (2 * 60 * 1000)) {
 			$("#status").removeClass("danger").addClass("success");
 			$("#status > .content").text("Up to date");
@@ -124,6 +121,10 @@ $(document).ready(function(e) {
 			$("#status").removeClass("success").addClass("danger");
 			$("#status > .content").text("Updating...");
 		}
+		$("#status").removeClass("danger").addClass("success");
+		$("#status > .content").text("Up to date");
+		
+
 
 		setTimeoffline();
 	});
@@ -155,7 +156,7 @@ $(document).ready(function(e) {
 		Arow.time = new Date(Arow.time);
 		if (Math.round(now) -  Math.round(Arow.time) < (2 * 60 * 1000)) {
 		$("#status").removeClass("loading").addClass("success");
-		$("#status > .content").text("Up to date off"); // ไม่มีอุปกรณ์มาต่อเลย
+		$("#status > .content").text("Up to date"); // ไม่มีอุปกรณ์มาต่อเลย
 		} else {
 			$("#status").removeClass("danger").addClass("success");
 			$("#status > .content").text("Up to date");   // ต่อ แต่ไม่มีไอเทม
@@ -214,7 +215,7 @@ var setTimeoffline = function() {   // ถ้าไม่มีการเช�
 	
 	toOffline = setTimeout(function() {
 		$("#status").removeClass("danger").addClass("success");
-		$("#status > .content").text("Up to date99");
+		$("#status > .content").text("Up to date");
 	}, 2 * 60 * 1000);
 }
 
