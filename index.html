@@ -166,8 +166,10 @@ $(document).ready(function(e) {
 	
 		var now = new Date();
 		Arow.time = new Date(Arow.time);
+
+
 		if (Math.round(now) -  Math.round(Arow.time) < (2 * 60 * 1000)) {
-		$("#status").removeClass("sucess").addClass("loading");
+		$("#status").removeClass("sucess").removeClass("danger").addClass("loading");
 		$("#status > .content").text("Wait Device"); // ไม่มีอุปกรณ์มาต่อเลย
 		} else {
 			$("#status").removeClass("loading").removeClass("success").addClass("danger");
