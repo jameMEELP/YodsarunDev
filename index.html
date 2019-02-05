@@ -46,7 +46,12 @@ var config = {
 
 $(document).ready(function(e) {
 	$.material.init()
-	
+	$("#status").removeClass("success").addClass("loading");
+	$("#temperature").removeClass("success").addClass("loading");
+	$("#humidity").removeClass("success").addClass("loading");
+	$("#pm1").removeClass("success").addClass("loading");
+	$("#pm25").removeClass("success").addClass("loading");
+	$("#pm10").removeClass("success").addClass("loading");
 	chart = new CanvasJS.Chart("chartContainer", {
 		title: {
 			text: "Temperature & Humidityhhh"
@@ -88,12 +93,13 @@ $(document).ready(function(e) {
 	firebase.initializeApp(config);
 		
 	var logDHT = firebase.database().ref().child("logDHT");
-		
+	
 	logDHT.on("child_added", function(sanp) {
 		if (!newItems)  // ต่ออยู่ แต่ไม่มีข้อมูลใหม่เข้ามา
 		{
 			$("#status").removeClass("danger").addClass("success");
 			$("#status > .content").text("Up to date cn");
+			
 
 			return;
 		} 
