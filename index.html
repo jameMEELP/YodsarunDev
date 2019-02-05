@@ -160,7 +160,7 @@ $(document).ready(function(e) {
 		$('#update_time').html(Arow.tims);
 		$("#temperature").removeClass("loading").addClass("primary");
 		$("#humidity").removeClass("loading").addClass("info");
-		$("#pm1").removeClass("loading").addClass("success");
+		$("#pm1").removeClass("loading").addClass("pm1");
 	
 		var now = new Date();
 		Arow.time = new Date(Arow.time);
@@ -252,6 +252,9 @@ var setTimeoffline = function() {   // ถ้าไม่มีการเช�
 
 .dialog.primary > .content{
 	background: #00aa9a;
+}
+.dialog.pm1 > .content{
+	background: #9c154d;
 }
 .dialog.success > .content {
 	background: #59b75c;
