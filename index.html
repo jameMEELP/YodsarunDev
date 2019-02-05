@@ -117,18 +117,18 @@ $(document).ready(function(e) {
 	 	$("#pm10 > .content").html(row.pm10 + " ug/m3");
 		$('#update_time').html(row.time);
 
-		// $("#status").removeClass("danger").addClass("success");
-		// $("#status > .content").text("Up to date");
+		$("#status").removeClass("danger").addClass("success");
+		$("#status > .content").text("Up to date");
 		
-		// if (Math.round(now) -  Math.round(Arow.time) < (2 * 60 * 1000)) {
-		// 	$("#status").removeClass("danger").addClass("success");
-		// 	$("#status > .content").text("Up to date");
+		if (Math.round(now) -  Math.round(Arow.time) < (2 * 60 * 1000)) {
+			$("#status").removeClass("danger").addClass("success");
+			$("#status > .content").text("Up to date");
 			
 			
-		// } else {
-		// 	$("#status").removeClass("success").addClass("danger");
-		// 	$("#status > .content").text("Updating...");
-		// }
+		} else {
+			$("#status").removeClass("success").addClass("danger");
+			$("#status > .content").text("Updating...");
+		}
 		setTimeoffline();
 	});
 
