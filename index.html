@@ -103,7 +103,7 @@ $(document).ready(function(e) {
 	axisX:{
 		valueFormatString: "HH:mm",
 	},
-	axisY2: {
+	axisY: {
 		title: "Number of Dust ug/m3",
 		prefix: "$",
 		suffix: "K"
@@ -126,31 +126,25 @@ $(document).ready(function(e) {
 		itemclick: toogleDataSeries
 	},
 	data: [{
-		type: "line",
+		type: "spline",
 		showInLegend: true,
-		axisYType: "secondary",
 		name: "PM 2.5",
-		markerSize: 1,
 		xValueFormatString: "DD MMM, YYYY",
 		yValueFormatString: "$##.## ug/m3  ",
 		dataPoints: []
 	},
 	{
-		type: "line",
+		type: "spline",
 		showInLegend: true,
-		axisYType: "secondary",
 		name: "PM 10",
-		markerSize: 1,
 		xValueFormatString: "DD MMM, YYYY",
 		yValueFormatString: "$##.## ug/m3  ",
 		dataPoints: []
 	},
 	{
-		type: "line",
+		type: "spline",
 		showInLegend: true,
-		axisYType: "secondary",
 		name: "PM 1",
-		markerSize: 1,
 		xValueFormatString: "DD MMM, YYYY",
 		yValueFormatString: "$##.## ug/m3  ",
 		dataPoints: []
