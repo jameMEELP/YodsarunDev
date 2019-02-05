@@ -97,7 +97,8 @@ $(document).ready(function(e) {
 
 			return;
 		} 
-		else{
+		if(newItems)
+		{
 			$("#status").removeClass("success").addClass("danger");
 			$("#status > .content").text("Updating...");
 		}
@@ -159,10 +160,10 @@ $(document).ready(function(e) {
 		Arow.time = new Date(Arow.time);
 		if (Math.round(now) -  Math.round(Arow.time) < (2 * 60 * 1000)) {
 		$("#status").removeClass("loading").addClass("success");
-		$("#status > .content").text("Up to dateoffm"); 
+		$("#status > .content").text("Up to dateoffm"); // ไม่มีอุปกรณ์มาต่อเลย
 		} else {
 			$("#status").removeClass("danger").addClass("success");
-			$("#status > .content").text("Up to date off");   // ไม่มีอุปกรณ์มาต่อ
+			$("#status > .content").text("Up to date off");   // ต่อ แต่ไม่มีไอเทม
 		}
 
 		if(Arow.pm25 >=0 && Arow.pm25 <=25)
