@@ -71,9 +71,9 @@ $(document).ready(function(e) {
 				var content = CanvasJS.formatDate(e.entries[0].dataPoint.x, "HH:mm:ss") + "<br>";
 				content += "<strong>Temperature</strong>: " + e.entries[0].dataPoint.y + " &deg;C<br>";
 				content += "<strong>Humidity</strong>: " + e.entries[1].dataPoint.y + " %";
-				content += "<strong>pm1</strong>: " + e.entries[2].dataPoint.y + " ug/m3";
-				content += "<strong>pm25</strong>: " + e.entries[3].dataPoint.y + " ug/m3";
-				content += "<strong>pm10</strong>: " + e.entries[4].dataPoint.y + " ug/m3";
+				// content += "<strong>pm1</strong>: " + e.entries[2].dataPoint.y + " ug/m3";
+				// content += "<strong>pm25</strong>: " + e.entries[3].dataPoint.y + " ug/m3";
+				// content += "<strong>pm10</strong>: " + e.entries[4].dataPoint.y + " ug/m3";
 				return content;
 			}
 		},
@@ -118,9 +118,9 @@ $(document).ready(function(e) {
 				var content = CanvasJS.formatDate(e.entries[0].dataPoint.x, "HH:mm:ss") + "<br>";
 				content += "<strong>Temperature</strong>: " + e.entries[0].dataPoint.y + " &deg;C<br>";
 				content += "<strong>Humidity</strong>: " + e.entries[1].dataPoint.y + " %";
-				content += "<strong>pm1</strong>: " + e.entries[2].dataPoint.y + " ug/m3";
-				content += "<strong>pm25</strong>: " + e.entries[3].dataPoint.y + " ug/m3";
-				content += "<strong>pm10</strong>: " + e.entries[4].dataPoint.y + " ug/m3";
+				// content += "<strong>pm1</strong>: " + e.entries[2].dataPoint.y + " ug/m3";
+				// content += "<strong>pm25</strong>: " + e.entries[3].dataPoint.y + " ug/m3";
+				// content += "<strong>pm10</strong>: " + e.entries[4].dataPoint.y + " ug/m3";
 				return content;
 			}
 	},  
@@ -188,10 +188,6 @@ $(document).ready(function(e) {
 		chart.options.data[1].dataPoints.push({x: row.time, y: row.humidity});
 		chart.render();
 
-		chart2.options.data[2].dataPoints.push({x: row.time, y: row.pm1});
-		chart2.options.data[3].dataPoints.push({x: row.time, y: row.pm25});
-		chart2.options.data[4].dataPoints.push({x: row.time, y: row.pm10});
-		char2.render();
 		$("#temperature > .content").html(row.temperature + " &deg;C");
 		$("#humidity > .content").text(row.humidity + " %");
 		$("#pm1 > .content").html(row.pm1 + " ug/m3");
@@ -271,14 +267,6 @@ $(document).ready(function(e) {
 			lastRows = row;
 		});
 		chart.render();
-
-		$.each(dataRows, function(index, row) {
-			row.time = new Date(row.time);
-			chart2.options.data[2].dataPoints.push({x: row.time, y: row.pm1});
-			chart2.options.data[3].dataPoints.push({x: row.time, y: row.pm25});
-			chart2.options.data[4].dataPoints.push({x: row.time, y: row.pm10});
-		});
-		char2.render();
 		
 		var Arow = lastRows;
 		$("#temperature > .content").html(Arow.temperature + " &deg;C");
