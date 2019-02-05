@@ -238,7 +238,7 @@ $(document).ready(function(){
   });
 });
 
-
+window.onload = function () {
 var chart = new CanvasJS.Chart("chartContainer2", {
 	animationEnabled: true,
 	theme: "light2",
@@ -315,6 +315,7 @@ var chart = new CanvasJS.Chart("chartContainer2", {
 		]
 	}]
 });
+
 chart.render();
 function toogleDataSeries(e){
 	if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
@@ -323,6 +324,7 @@ function toogleDataSeries(e){
 		e.dataSeries.visible = true;
 	}
 	chart.render();
+}
 }
 
 
