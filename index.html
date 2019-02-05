@@ -231,6 +231,11 @@ var setTimeoffline = function() {   // ถ้าไม่มีการเช�
 	}, 2 * 60 * 1000);
 }
 
+$(document).ready(function(){
+  $("#flip").click(function(){
+    $("#panel").slideToggle("slow");
+  });
+});
 
 </script>
 
@@ -325,6 +330,17 @@ td{
 	color:rgb(255, 255, 255);
 }
 
+#panel, #flip {
+  padding: 5px;
+  text-align: center;
+  background-color: #e5eecc;
+  border: solid 1px #c3c3c3;
+}
+
+#panel {
+  padding: 50px;
+  display: none;
+}
 
 </style>
 </head>
@@ -388,7 +404,8 @@ td{
 		</center>
 		<br>
 				<!-- <img src=image/aqi.png width="70%" > -->
-				<center><table style="height:50%;">
+		<div id="flip"> click</div>
+			<center><table style="height:50%;">
 					<tr bgcolor="#FFFFFF">
 					  <th width="15%">AQI</th>
 					  <th width="15%">PM 2.5</th> 
@@ -430,7 +447,6 @@ td{
 						<td width="55%">ทุกคนควรหลีกเลี่ยงกิจกรรมกลางแจ้งทุก หลีกเลี่ยงพื้นที่ที่มีมลพิษทางอากาศสูง หรือใช้อุปกรณ์ป้องกันตนเองหากมีความจำเป็น หากมีอาการทางสุขภาพควรปรึกษาแพทย์</td>
 					</tr>
 				  </table></center>
-
 
       </div>
     <div role="tabpanel" class="tab-pane" id="history">
