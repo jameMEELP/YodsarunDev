@@ -98,9 +98,7 @@ $(document).ready(function(e) {
 		if (!newItems)  // ต่ออยู่ แต่ไม่มีข้อมูลใหม่เข้ามา
 		{
 			$("#status").removeClass("danger").addClass("success");
-			$("#status > .content").text("Up to date cn");
-			
-
+			$("#status > .content").text("Up to date");
 			return;
 		} 
 		
@@ -132,7 +130,6 @@ $(document).ready(function(e) {
 		$("#status").removeClass("danger").addClass("success");
 		$("#status > .content").text("Up to date");
 		
-
 
 		setTimeoffline();
 	});
@@ -169,7 +166,7 @@ $(document).ready(function(e) {
 		$("#status").removeClass("sucess").addClass("loading");
 		$("#status > .content").text("Wait Device"); // ไม่มีอุปกรณ์มาต่อเลย
 		} else {
-			$("#status").removeClass("danger").addClass("success");
+			$("#status").addClass("success");
 			$("#status > .content").text("Online");   // ต่อ แต่ไม่มีไอเทม
 		}
 
