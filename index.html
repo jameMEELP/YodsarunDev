@@ -97,6 +97,10 @@ $(document).ready(function(e) {
 
 			return;
 		} 
+		else{
+			$("#status").removeClass("success").addClass("danger");
+			$("#status > .content").text("Updating...cn");
+		}
 
 		var row = sanp.val();
 		
@@ -112,8 +116,8 @@ $(document).ready(function(e) {
 	 	$("#pm10 > .content").html(row.pm10 + " ug/m3");
 		$('#update_time').html(row.tims);
 
-		$("#status").removeClass("danger").addClass("success");
-		$("#status > .content").text("Up to date555");
+		// $("#status").removeClass("danger").addClass("success");
+		// $("#status > .content").text("Up to date555");
 		
 		if (Math.round(now) -  Math.round(Arow.time) < (2 * 60 * 1000)) {
 			$("#status").removeClass("danger").addClass("success");
