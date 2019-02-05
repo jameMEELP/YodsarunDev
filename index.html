@@ -185,6 +185,9 @@ $(document).ready(function(e) {
 		row.time = new Date(row.time);
 		chart.options.data[0].dataPoints.push({x: row.time, y: row.temperature});
 		chart.options.data[1].dataPoints.push({x: row.time, y: row.humidity});
+		chart.options.data[2].dataPoints.push({y: row.pm1});
+		chart.options.data[3].dataPoints.push({y: row.pm25});
+		chart.options.data[4].dataPoints.push({y: row.pm10});
 		chart.render();
 		
 		$("#temperature > .content").html(row.temperature + " &deg;C");
@@ -263,6 +266,9 @@ $(document).ready(function(e) {
 			row.time = new Date(row.time);
 			chart.options.data[0].dataPoints.push({x: row.time, y: row.temperature});
 			chart.options.data[1].dataPoints.push({x: row.time, y: row.humidity});	
+			chart.options.data[2].dataPoints.push({y: row.pm1});
+			chart.options.data[3].dataPoints.push({y: row.pm25});
+			chart.options.data[4].dataPoints.push({y: row.pm10});
 			lastRows = row;
 		});
 		chart.render();
