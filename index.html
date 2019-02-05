@@ -176,45 +176,45 @@ $(document).ready(function(e) {
 
 		if(Arow.pm25 >=0 && Arow.pm25 <=25)
 		{
-			$("#pm25").removeClass("loading").addClass("verygood");
+			$("#pm25").removeClass().addClass("verygood");
 		}
 		else if(Arow.pm25 >=26 && Arow.pm25 <=37)
 		{
-			$("#pm25").removeClass("loading").addClass("good");
+			$("#pm25").removeClass().addClass("good");
 		}
 		else if(Arow.pm25 >=38 && Arow.pm25 <=50)
 		{
-			$("#pm25").removeClass("loading").addClass("mediam");
+			$("#pm25").removeClass().addClass("mediam");
 		}
 		else if(Arow.pm25 >=51 && Arow.pm25 <=90)
 		{
-			$("#pm25").removeClass("loading").addClass("bad");
+			$("#pm25").removeClass().addClass("bad");
 		}
 		else if(Arow.pm25 > 90)
 		{
-			$("#pm25").removeClass("loading").addClass("verybad");
+			$("#pm25").removeClass().addClass("verybad");
 		}
 
 		////////////////////////////////////////////////////////////////////////////////////////////////////
 		if(Arow.pm10 >=0 && Arow.pm10 <=50)
 		{
-			$("#pm10").removeClass("loading").addClass("verygood");
+			$("#pm10").removeClass().addClass("verygood");
 		}
 		else if(Arow.pm10 >=51 && Arow.pm10 <=80)
 		{
-			$("#pm10").removeClass("loading").addClass("good");
+			$("#pm10").removeClass().addClass("good");
 		}
 		else if(Arow.pm10 >=81 && Arow.pm10 <=120)
 		{
-			$("#pm10").removeClass("loading").addClass("mediam");
+			$("#pm10").removeClass().addClass("mediam");
 		}
 		else if(Arow.pm10 >=121 && Arow.pm10 <=180)
 		{
-			$("#pm10").removeClass("loading").addClass("bad");
+			$("#pm10").removeClass().addClass("bad");
 		}
 		else if(Arow.pm10 > 180)
 		{
-			$("#pm10").removeClass("loading").addClass("verybad");
+			$("#pm10").removeClass().addClass("verybad");
 		}
 	
 		setTimeoffline();
