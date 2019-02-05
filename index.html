@@ -105,16 +105,14 @@ $(document).ready(function(e) {
 	},
 	axisY: {
 		title: "Number of Dust ug/m3",
-		prefix: "$",
-		suffix: "K"
 	},
 	toolTip:{
 		shared:true,
 		contentFormatter: function (e) {
 				var content = CanvasJS.formatDate(e.entries[0].dataPoint.x, "HH:mm:ss") + "<br>";
-				content += "<strong>pm1</strong>: " + e.entries[0].dataPoint.y + " ug/m3 ";
-				content += "<strong>pm25</strong>: " + e.entries[1].dataPoint.y + " ug/m3 ";
-				content += "<strong>pm10</strong>: " + e.entries[2].dataPoint.y + " ug/m3 ";
+				content += "<strong>PM 1</strong>: " + e.entries[0].dataPoint.y + " ug/m3 ";
+				content += "<strong>PM 2.5</strong>: " + e.entries[1].dataPoint.y + " ug/m3 ";
+				content += "<strong>PM 10</strong>: " + e.entries[2].dataPoint.y + " ug/m3 ";
 				return content;
 			}
 	},  
