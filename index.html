@@ -112,9 +112,9 @@ $(document).ready(function(e) {
 		shared:true,
 		contentFormatter: function (e) {
 				var content = CanvasJS.formatDate(e.entries[0].dataPoint.x, "HH:mm:ss") + "<br>";
-				content += "<strong>pm1</strong>: " + e.entries[0].dataPoint.y + " ug/m3";
-				content += "<strong>pm25</strong>: " + e.entries[1].dataPoint.y + " ug/m3";
-				content += "<strong>pm10</strong>: " + e.entries[2].dataPoint.y + " ug/m3";
+				content += "<strong>pm1</strong>: " + e.entries[0].dataPoint.y + " ug/m3 ";
+				content += "<strong>pm25</strong>: " + e.entries[1].dataPoint.y + " ug/m3 ";
+				content += "<strong>pm10</strong>: " + e.entries[2].dataPoint.y + " ug/m3 ";
 				return content;
 			}
 	},  
@@ -132,7 +132,7 @@ $(document).ready(function(e) {
 		name: "PM 2.5",
 		markerSize: 1,
 		xValueFormatString: "DD MMM, YYYY",
-		yValueFormatString: "$##.## ug/m3",
+		yValueFormatString: "$##.## ug/m3  ",
 		color: "#F08080",
 		dataPoints: []
 	},
@@ -143,7 +143,7 @@ $(document).ready(function(e) {
 		name: "PM 10",
 		markerSize: 1,
 		xValueFormatString: "DD MMM, YYYY",
-		yValueFormatString: "$##.## ug/m3",
+		yValueFormatString: "$##.## ug/m3  ",
 		color: "#3333FF",
 		dataPoints: []
 	},
@@ -154,7 +154,7 @@ $(document).ready(function(e) {
 		name: "PM 1",
 		markerSize: 1,
 		xValueFormatString: "DD MMM, YYYY",
-		yValueFormatString: "$##.## ug/m3",
+		yValueFormatString: "$##.## ug/m3  ",
 		color: "#FFD700",
 		dataPoints: []
 	}]
