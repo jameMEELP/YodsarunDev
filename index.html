@@ -90,10 +90,10 @@ $(document).ready(function(e) {
 	var logDHT = firebase.database().ref().child("logDHT");
 		
 	logDHT.on("child_added", function(sanp) {
-		if (!newItems)
+		if (!newItems)  // ต่ออยู่ แต่ไม่มีข้อมูลใหม่เข้ามา
 		{
 			$("#status").removeClass("danger").addClass("success");
-			$("#status > .content").text("Updating...");
+			$("#status > .content").text("Up to date cn");
 
 			return;
 		} 
