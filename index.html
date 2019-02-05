@@ -121,16 +121,16 @@ $(document).ready(function(e) {
 		$('#update_time').html(row.tims);
 
 		if (Math.round(now) -  Math.round(Arow.time) < (2 * 60 * 1000)) {
-			$("#status").removeClass("danger").addClass("success");
+			$("#status").removeClass("danger").removeClass("loading").addClass("success");
 			$("#status > .content").text("Up to date");
 			
 			
 		} else {
-			$("#status").removeClass("success").addClass("danger");
+			$("#status").removeClass("success").removeClass("loading").addClass("danger");
 			$("#status > .content").text("Updating...");
 		}
 
-		$("#status").removeClass("danger").addClass("success");
+		$("#status").removeClass("danger").removeClass("loading").addClass("success");
 		$("#status > .content").text("Up to date");
 		
 
@@ -226,7 +226,7 @@ var setTimeoffline = function() {   // ถ้าไม่มีการเช�
 	if (typeof toOffline === "number") clearTimeout(toOffline);
 	
 	toOffline = setTimeout(function() {
-		$("#status").removeClass("danger").addClass("success");
+		$("#status").removeClass("danger").removeClass("loading").addClass("success");
 		$("#status > .content").text("Up to date");
 	}, 2 * 60 * 1000);
 }
