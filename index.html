@@ -97,11 +97,6 @@ $(document).ready(function(e) {
 
 			return;
 		} 
-		if(newItems)
-		{
-			$("#status").removeClass("success").addClass("danger");
-			$("#status > .content").text("Updating...");
-		}
 
 		var row = sanp.val();
 		
@@ -117,17 +112,17 @@ $(document).ready(function(e) {
 	 	$("#pm10 > .content").html(row.pm10 + " ug/m3");
 		$('#update_time').html(row.tims);
 
-		// $("#status").removeClass("danger").addClass("success");
-		// $("#status > .content").text("Up to date555");
+		$("#status").removeClass("danger").addClass("success");
+		$("#status > .content").text("Up to date");
 		
 		if (Math.round(now) -  Math.round(Arow.time) < (2 * 60 * 1000)) {
 			$("#status").removeClass("danger").addClass("success");
-			$("#status > .content").text("Up to date2");
+			$("#status > .content").text("Up to date");
 			
 			
 		} else {
 			$("#status").removeClass("success").addClass("danger");
-			$("#status > .content").text("Updating...1");
+			$("#status > .content").text("Updating...");
 		}
 
 		setTimeoffline();
@@ -326,7 +321,7 @@ var setTimeoffline = function() {   // ถ้าไม่มีการเช�
              </div>
            </div>
            <div class="col-sm-4">
-             <div class="dialog success fadeIn animated" id="status">
+             <div class="dialog success fadeIn animated" id="update_time">
 			   <div class="content">loading..</div>
                <div class="title">Status</div>
              </div>
