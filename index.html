@@ -117,8 +117,8 @@ $(document).ready(function(e) {
 	 	$("#pm10 > .content").html(row.pm10 + " ug/m3");
 		$('#update_time').html(row.tims);
 
-		$("#status").removeClass("danger").addClass("success");
-		$("#status > .content").text("Up to date3");
+		$("#status").removeClass("success").addClass("danger");
+		$("#status > .content").text("ีกำลังอัพเดทข้อมูล");
 		
 		if (Math.round(now) -  Math.round(Arow.time) < (2 * 60 * 1000)) {
 			$("#status").removeClass("danger").addClass("success");
@@ -213,7 +213,7 @@ $(document).ready(function(e) {
 
 });
 
-var setTimeoffline = function() {
+var setTimeoffline = function() {   // ถ้าไม่มีการเชื่อมต่อ
 	if (typeof toOffline === "number") clearTimeout(toOffline);
 	
 	toOffline = setTimeout(function() {
