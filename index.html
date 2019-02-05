@@ -45,8 +45,7 @@ var config = {
   };
 
 $(document).ready(function(e) {
-	$.material.init();
-	$("#status").addClass("loading");
+	$.material.init()
 	$("#temperature").addClass("loading");
 	$("#humidity").addClass("loading");
 	$("#pm1").addClass("loading");
@@ -99,7 +98,9 @@ $(document).ready(function(e) {
 		if (!newItems)  // ต่ออยู่ แต่ไม่มีข้อมูลใหม่เข้ามา
 		{
 			$("#status").removeClass("danger").addClass("success");
-			$("#status > .content").text("Up to date");
+			$("#status > .content").text("Up to date cn");
+			
+
 			return;
 		} 
 		
@@ -131,6 +132,7 @@ $(document).ready(function(e) {
 		$("#status").removeClass("danger").addClass("success");
 		$("#status > .content").text("Up to date");
 		
+
 
 		setTimeoffline();
 	});
@@ -164,10 +166,10 @@ $(document).ready(function(e) {
 		var now = new Date();
 		Arow.time = new Date(Arow.time);
 		if (Math.round(now) -  Math.round(Arow.time) < (2 * 60 * 1000)) {
-		$("#status").addClass("loading");
+		$("#status").removeClass("sucess").addClass("loading");
 		$("#status > .content").text("Wait Device"); // ไม่มีอุปกรณ์มาต่อเลย
 		} else {
-			$("#status").addClass("success");
+			$("#status").removeClass("danger").addClass("success");
 			$("#status > .content").text("Online");   // ต่อ แต่ไม่มีไอเทม
 		}
 
