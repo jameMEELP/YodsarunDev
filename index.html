@@ -69,9 +69,9 @@ $(document).ready(function(e) {
 			shared: true,
 			contentFormatter: function (e) {
 				var content = CanvasJS.formatDate(e.entries[0].dataPoint.x, "HH:mm:ss") + "<br>";
-				content += "<strong>pm1</strong>: " + e.entries[0].dataPoint.y + " &deg;C<br>";
-				content += "<strong>pm25</strong>: " + e.entries[1].dataPoint.y + " %";
-				content += "<strong>pm10</strong>: " + e.entries[2].dataPoint.y + " ug/m3";
+				content += "<strong>Temperature</strong>: " + e.entries[0].dataPoint.y + " &deg;C<br>";
+				content += "<strong>Humidity</strong>: " + e.entries[1].dataPoint.y + " %";
+				// content += "<strong>pm1</strong>: " + e.entries[2].dataPoint.y + " ug/m3";
 				// content += "<strong>pm25</strong>: " + e.entries[3].dataPoint.y + " ug/m3";
 				// content += "<strong>pm10</strong>: " + e.entries[4].dataPoint.y + " ug/m3";
 				return content;
@@ -116,9 +116,9 @@ $(document).ready(function(e) {
 		shared:true,
 		contentFormatter: function (e) {
 				var content = CanvasJS.formatDate(e.entries[0].dataPoint.x, "HH:mm:ss") + "<br>";
-				content += "<strong>pm1</strong>: " + e.entries[0].dataPoint.y + " &deg;C<br>";
-				content += "<strong>pm25</strong>: " + e.entries[1].dataPoint.y + " %";
-				content += "<strong>pm10</strong>: " + e.entries[2].dataPoint.y + " ug/m3";
+				content += "<strong>Temperature</strong>: " + e.entries[0].dataPoint.y + " &deg;C<br>";
+				content += "<strong>Humidity</strong>: " + e.entries[1].dataPoint.y + " %";
+				// content += "<strong>pm1</strong>: " + e.entries[2].dataPoint.y + " ug/m3";
 				// content += "<strong>pm25</strong>: " + e.entries[3].dataPoint.y + " ug/m3";
 				// content += "<strong>pm10</strong>: " + e.entries[4].dataPoint.y + " ug/m3";
 				return content;
@@ -184,9 +184,8 @@ $(document).ready(function(e) {
 		var row = sanp.val();
 
 		row.time = new Date(row.time);
-		chart.options.data[0].dataPoints.push({x: row.time, y: row.pm1});
-		chart.options.data[1].dataPoints.push({x: row.time, y: row.pm25});
-		chart.options.data[2].dataPoints.push({x: row.time, y: row.pm10});
+		chart.options.data[0].dataPoints.push({x: row.time, y: row.temperature});
+		chart.options.data[1].dataPoints.push({x: row.time, y: row.humidity});
 		chart.render();
 
 		$("#temperature > .content").html(row.temperature + " &deg;C");
@@ -260,12 +259,11 @@ $(document).ready(function(e) {
 		console.log(sanp);
 		newItems = true;
 		var dataRows = sanp.val();
-		var lastRows = 0;
+		var lastRows2 = 0;
 		$.each(dataRows, function(index, row) {
 			row.time = new Date(row.time);
-			chart.options.data[0].dataPoints.push({x: row.time, y: row.pm1});
-			chart.options.data[1].dataPoints.push({x: row.time, y: row.pm10});	
-			chart.options.data[2].dataPoints.push({x: row.time, y: row.pm10});	
+			chart.options.data[0].dataPoints.push({x: row.time, y: row.temperature});
+			chart.options.data[1].dataPoints.push({x: row.time, y: row.humidity});	
 			lastRows = row;
 		});
 		chart.render();
