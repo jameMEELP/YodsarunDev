@@ -100,7 +100,6 @@ $(document).ready(function(e) {
 			$("#status > .content").text("Updating...");
 		}
 		var row = sanp.val();
-		now = new Date(row.time)
 		row.time = new Date(row.time);
 		chart.options.data[0].dataPoints.push({x: row.time, y: row.temperature});
 		chart.options.data[1].dataPoints.push({x: row.time, y: row.humidity});
@@ -110,7 +109,7 @@ $(document).ready(function(e) {
 		$("#pm1 > .content").html(row.pm1 + " ug/m3");
 	 	$("#pm25 > .content").html(row.pm25 + " ug/m3");
 	 	$("#pm10 > .content").html(row.pm10 + " ug/m3");
-		$('#update_time').text(now.getHours() +":"+ now.getMinutes() +":" + now.getSeconds() + "  " + now.getUTCFullYear() + "-" + now.getUTCMonth() +"-" + now.getUTCDate());
+		$('#update_time').text(row.time.getFullYear());
 
 		// $("#status").removeClass("danger").addClass("success");
 		// $("#status > .content").text("Up to date");
