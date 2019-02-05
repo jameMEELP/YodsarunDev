@@ -46,12 +46,13 @@ var config = {
 
 $(document).ready(function(e) {
 	$.material.init()
-	$("#status").removeClass("success").addClass("loading");
-	$("#temperature").removeClass("success").addClass("loading");
-	$("#humidity").removeClass("success").addClass("loading");
-	$("#pm1").removeClass("success").addClass("loading");
-	$("#pm25").removeClass("success").addClass("loading");
-	$("#pm10").removeClass("success").addClass("loading");
+	$("#status").addClass("loading");
+	$("#temperature").addClass("loading");
+	$("#humidity").addClass("loading");
+	$("#pm1").addClass("loading");
+	$("#pm25").addClass("loading");
+	$("#pm10").addClass("loading");
+
 	chart = new CanvasJS.Chart("chartContainer", {
 		title: {
 			text: "Temperature & Humidityhhh"
@@ -103,7 +104,9 @@ $(document).ready(function(e) {
 
 			return;
 		} 
-
+		$("#temperature").removeClass("loading").addClass("primary");
+		$("#humidity").removeClass("loading").addClass("info");
+		$("#pm1").removeClass("loading").addClass("success");
 		var row = sanp.val();
 		
 		row.time = new Date(row.time);
@@ -162,8 +165,8 @@ $(document).ready(function(e) {
 		var now = new Date();
 		Arow.time = new Date(Arow.time);
 		if (Math.round(now) -  Math.round(Arow.time) < (2 * 60 * 1000)) {
-		$("#status").removeClass("loading").addClass("success");
-		$("#status > .content").text("Offline"); // ไม่มีอุปกรณ์มาต่อเลย
+		$("#status").removeClass("sucess").addClass("loading");
+		$("#status > .content").text("Wait Device"); // ไม่มีอุปกรณ์มาต่อเลย
 		} else {
 			$("#status").removeClass("danger").addClass("success");
 			$("#status > .content").text("Online");   // ต่อ แต่ไม่มีไอเทม
