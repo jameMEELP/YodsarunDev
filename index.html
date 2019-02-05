@@ -115,7 +115,7 @@ $(document).ready(function(e) {
 		$("#pm1 > .content").html(row.pm1 + " ug/m3");
 	 	$("#pm25 > .content").html(row.pm25 + " ug/m3");
 	 	$("#pm10 > .content").html(row.pm10 + " ug/m3");
-		$('#update_time').html(time.getFullYear() +"-" + time.getMonth() +"-" + time.getDate());
+		$('#update_time').html(row.time);
 
 		$("#status").removeClass("danger").addClass("success");
 		$("#status > .content").text("Up to date");
@@ -319,7 +319,7 @@ var setTimeoffline = function() {
            </div>
            <div class="col-sm-4">
              <div class="dialog info fadeIn animated" id="humidity">
-               <div class="loading">loading..</div>
+               <div class="content">loading..</div>
                <div class="title">Humidity</div>
              </div>
            </div>
