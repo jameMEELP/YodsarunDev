@@ -96,73 +96,73 @@ $(document).ready(function(e) {
 
 
 		///////////////////////////////////////  <<  Chart2 PM2.5
-	window.onload = function () {
-	chart2 = new CanvasJS.Chart("chartContainer2", {
-	animationEnabled: true,
-	theme: "light2",
-	title:{
-		text: "PM 1 & PM 1 & PM 10"
-	},
-	axisX:{
-		valueFormatString: "HH:mm",
-	},
-	axisY: {
-		title: "Number of Dust ug/m3",
-		suffix: " ug/m3"
-	},
-	toolTip:{
-		shared:true,
-		contentFormatter: function (e) {
-				var content = CanvasJS.formatDate(e.entries[0].dataPoint.x, "HH:mm:ss") + "<br>";
-				content += "<strong>PM 1</strong>: " + e.entries[0].dataPoint.y + " ug/m3 ";
-				content += "<strong>PM 2.5</strong>: " + e.entries[1].dataPoint.y + " ug/m3 ";
-				content += "<strong>PM 10</strong>: " + e.entries[2].dataPoint.y + " ug/m3 ";
-				return content;
-			}
-	},  
-	legend:{
-		cursor:"pointer",
-		verticalAlign: "top",
-		horizontalAlign: "center",
-		dockInsidePlotArea: true,
-		itemclick: toogleDataSeries
-	},
-	data: [{
-		type: "spline",
-		showInLegend: true,
-		name: "PM 2.5",
-		xValueFormatString: "DD MMM, YYYY",
-		yValueFormatString: "$##.## ug/m3  ",
-		dataPoints: []
-	},
-	{
-		type: "spline",
-		showInLegend: true,
-		name: "PM 10",
-		xValueFormatString: "DD MMM, YYYY",
-		yValueFormatString: "$##.## ug/m3  ",
-		dataPoints: []
-	},
-	{
-		type: "spline",
-		showInLegend: true,
-		name: "PM 1",
-		xValueFormatString: "DD MMM, YYYY",
-		yValueFormatString: "$##.## ug/m3  ",
-		dataPoints: []
-	}]
-	});
+	// window.onload = function () {
+	// chart2 = new CanvasJS.Chart("chartContainer2", {
+	// animationEnabled: true,
+	// theme: "light2",
+	// title:{
+	// 	text: "PM 1 & PM 1 & PM 10"
+	// },
+	// axisX:{
+	// 	valueFormatString: "HH:mm",
+	// },
+	// axisY: {
+	// 	title: "Number of Dust ug/m3",
+	// 	suffix: " ug/m3"
+	// },
+	// toolTip:{
+	// 	shared:true,
+	// 	contentFormatter: function (e) {
+	// 			var content = CanvasJS.formatDate(e.entries[0].dataPoint.x, "HH:mm:ss") + "<br>";
+	// 			content += "<strong>PM 1</strong>: " + e.entries[0].dataPoint.y + " ug/m3 ";
+	// 			content += "<strong>PM 2.5</strong>: " + e.entries[1].dataPoint.y + " ug/m3 ";
+	// 			content += "<strong>PM 10</strong>: " + e.entries[2].dataPoint.y + " ug/m3 ";
+	// 			return content;
+	// 		}
+	// },  
+	// legend:{
+	// 	cursor:"pointer",
+	// 	verticalAlign: "top",
+	// 	horizontalAlign: "center",
+	// 	dockInsidePlotArea: true,
+	// 	itemclick: toogleDataSeries
+	// },
+	// data: [{
+	// 	type: "spline",
+	// 	showInLegend: true,
+	// 	name: "PM 2.5",
+	// 	xValueFormatString: "DD MMM, YYYY",
+	// 	yValueFormatString: "$##.## ug/m3  ",
+	// 	dataPoints: []
+	// },
+	// {
+	// 	type: "spline",
+	// 	showInLegend: true,
+	// 	name: "PM 10",
+	// 	xValueFormatString: "DD MMM, YYYY",
+	// 	yValueFormatString: "$##.## ug/m3  ",
+	// 	dataPoints: []
+	// },
+	// {
+	// 	type: "spline",
+	// 	showInLegend: true,
+	// 	name: "PM 1",
+	// 	xValueFormatString: "DD MMM, YYYY",
+	// 	yValueFormatString: "$##.## ug/m3  ",
+	// 	dataPoints: []
+	// }]
+	// });
 
-	chart2.render();
-	function toogleDataSeries(e){
-		if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
-			e.dataSeries.visible = false;
-		} else{
-			e.dataSeries.visible = true;
-		}
-		chart2.render();
-	}
-	}
+	// chart2.render();
+	// function toogleDataSeries(e){
+	// 	if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+	// 		e.dataSeries.visible = false;
+	// 	} else{
+	// 		e.dataSeries.visible = true;
+	// 	}
+	// 	chart2.render();
+	// }
+	// }
 	
 	firebase.initializeApp(config);
 		
