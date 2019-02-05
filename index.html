@@ -56,6 +56,8 @@ $(document).ready(function(e) {
 	$("#pm10").addClass("loading");
 
 	chart = new CanvasJS.Chart("chartContainer", {
+		animationEnabled: true,
+		exportEnabled: true,
 		title: {
 			text: "Temperature & Humidityhhh"
 		},
@@ -75,14 +77,19 @@ $(document).ready(function(e) {
 				return content;
 			}
 		},
-		animationEnabled: true,
+		legend:{
+		cursor:"pointer",
+		itemclick: toggleDataSeries
+		},
 		data: [
 			{
 				type: "spline", //change it to line, area, column, pie, etc
+				name:"Temperarute",
 				dataPoints: []
 			},
 			{
 				type: "spline", //change it to line, area, column, pie, etc
+				name: "Humidity",
 				dataPoints: []
 			}
 		]
