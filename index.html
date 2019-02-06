@@ -1,568 +1,629 @@
 <!DOCTYPE HTML>
 <html>
+
 <head>
-<meta charset="utf-8">
-<title>Temperature &amp; Dust Detector Dashboard | Yodsarun</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8">
+	<title>Temperature &amp; Dust Detector Dashboard | Yodsarun</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- jQuery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	<!-- jQuery -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 
-<!-- Firebase -->
-<script src="https://www.gstatic.com/firebasejs/3.3.2/firebase.js"></script>
+	<!-- Firebase -->
+	<script src="https://www.gstatic.com/firebasejs/3.3.2/firebase.js"></script>
 
-<!-- canvasjs -->
-<script src="js/jquery.canvasjs.min.js"></script>
-<script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
-<script src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.js"></script>
+	<!-- canvasjs -->
+	<script src="js/jquery.canvasjs.min.js"></script>
+	<script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+	<script src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.js"></script>
 
-<!-- Material Design fonts -->
-<!-- <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" /> -->
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<link href="https://fonts.googleapis.com/css?family=Open+Sans|Sarabun" rel="stylesheet">
-  
-<!-- Bootstrap -->
-<link rel="stylesheet" href="css/bootstrap.min.css">
-<link rel="stylesheet" href="css/bootstrap-material-design.min.css">
-<link rel="stylesheet" href="css/ripples.min.css">
-<script src="js/bootstrap.min.js"></script>
-<script src="js/material.min.js"></script>
-<script src="js/ripples.min.js"></script>
-<!-- Animate.css -->
-<link rel="stylesheet" href="css/animate.min.css">
-	
+	<!-- Material Design fonts -->
+	<!-- <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" /> -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans|Sarabun" rel="stylesheet">
 
-<script>
-	
-var chart, toOffline;
-var chart2;
-var chart3;
-var newItems = false;
-// Initialize Firebase
-var config = {
-    apiKey: "AIzaSyBB8kn_FvY0EiBxAun12X6VK9S224cMNjI",
-    authDomain: "pm25-detector.firebaseapp.com",
-    databaseURL: "https://pm25-detector.firebaseio.com",
-    projectId: "pm25-detector",
-    storageBucket: "pm25-detector.appspot.com",
-    messagingSenderId: "341665027332"
-  };
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/bootstrap-material-design.min.css">
+	<link rel="stylesheet" href="css/ripples.min.css">
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/material.min.js"></script>
+	<script src="js/ripples.min.js"></script>
+	<!-- Animate.css -->
+	<link rel="stylesheet" href="css/animate.min.css">
 
-$(document).ready(function(e) {
-	$.material.init()
-	$("#status").addClass("loading");
-	$("#temperature").addClass("loading");
-	$("#humidity").addClass("loading");
-	$("#pm1").addClass("loading");
-	$("#pm25").addClass("loading");
-	$("#pm10").addClass("loading");
 
-	chart = new CanvasJS.Chart("chartContainer", {
-		theme: "light2",
-		title: {
-			text: "Temperature & Humidityhhh"
-		},
-		axisX:{  
-			valueFormatString: "HH:mm"
-		},
-		axisY: {
-			valueFormatString: "0.0#"
-		},
-		toolTip: {
-			shared: true,
-			contentFormatter: function (e) {
-				var content = CanvasJS.formatDate(e.entries[0].dataPoint.x, "HH:mm:ss") + "<br>";
-				content += "<strong>Temperature</strong>: " + e.entries[0].dataPoint.y + " &deg;C<br>";
-				content += "<strong>Humidity</strong>: " + e.entries[1].dataPoint.y + " %";
+	<script>
 
-				return content;
+		var chart, toOffline;
+		var chart2;
+		var chart3;
+		var newItems = false;
+		// Initialize Firebase
+		var config = {
+			apiKey: "AIzaSyBB8kn_FvY0EiBxAun12X6VK9S224cMNjI",
+			authDomain: "pm25-detector.firebaseapp.com",
+			databaseURL: "https://pm25-detector.firebaseio.com",
+			projectId: "pm25-detector",
+			storageBucket: "pm25-detector.appspot.com",
+			messagingSenderId: "341665027332"
+		};
+
+		$(document).ready(function (e) {
+			$.material.init()
+			$("#status").addClass("loading");
+			$("#temperature").addClass("loading");
+			$("#humidity").addClass("loading");
+			$("#pm1").addClass("loading");
+			$("#pm25").addClass("loading");
+			$("#pm10").addClass("loading");
+
+			chart = new CanvasJS.Chart("chartContainer", {
+				theme: "light2",
+				title: {
+					text: "Temperature & Humidityhhh"
+				},
+				axisX: {
+					valueFormatString: "HH:mm"
+				},
+				axisY: {
+					valueFormatString: "0.0#"
+				},
+				toolTip: {
+					shared: true,
+					contentFormatter: function (e) {
+						var content = CanvasJS.formatDate(e.entries[0].dataPoint.x, "HH:mm:ss") + "<br>";
+						content += "<strong>Temperature</strong>: " + e.entries[0].dataPoint.y + " &deg;C<br>";
+						content += "<strong>Humidity</strong>: " + e.entries[1].dataPoint.y + " %";
+
+						return content;
+					}
+				},
+
+				animationEnabled: true,
+				data: [
+					{
+						name: "Temperature",
+						type: "spline", //change it to line, area, column, pie, etc
+						dataPoints: []
+					},
+					{
+						name: "Humidity",
+						type: "spline", //change it to line, area, column, pie, etc
+						dataPoints: []
+					}
+				]
+			});
+			chart.render();
+
+
+
+			///////////////////////////////////////  <<  Chart2 PM2.5
+
+			chart2 = new CanvasJS.Chart("chartContainer2", {
+				animationEnabled: true,
+				theme: "light2",
+				title: {
+					text: "PM 1 & PM 1 & PM 10"
+				},
+				axisX: {
+					valueFormatString: "HH:mm",
+				},
+				axisY: {
+					title: "Number of Dust ug/m3",
+					suffix: " ug/m3"
+				},
+				toolTip: {
+					shared: true,
+					contentFormatter: function (e) {
+						var content = CanvasJS.formatDate(e.entries[0].dataPoint.x, "HH:mm:ss") + "<br>";
+						content += "<strong>PM 1</strong>: " + e.entries[0].dataPoint.y + " ug/m3 ";
+						content += "<strong>PM 2.5</strong>: " + e.entries[1].dataPoint.y + " ug/m3 ";
+						content += "<strong>PM 10</strong>: " + e.entries[2].dataPoint.y + " ug/m3 ";
+						return content;
+					}
+				},
+				legend: {
+					cursor: "pointer",
+					verticalAlign: "top",
+					horizontalAlign: "center",
+					dockInsidePlotArea: true,
+					itemclick: toogleDataSeries
+				},
+				data: [{
+					type: "spline",
+					showInLegend: true,
+					name: "PM 2.5",
+					xValueFormatString: "DD MMM, YYYY",
+					yValueFormatString: "$##.## ug/m3  ",
+					dataPoints: []
+				},
+				{
+					type: "spline",
+					showInLegend: true,
+					name: "PM 10",
+					xValueFormatString: "DD MMM, YYYY",
+					yValueFormatString: "$##.## ug/m3  ",
+					dataPoints: []
+				},
+				{
+					type: "spline",
+					showInLegend: true,
+					name: "PM 1",
+					xValueFormatString: "DD MMM, YYYY",
+					yValueFormatString: "$##.## ug/m3  ",
+					dataPoints: []
+				}]
+			});
+
+			chart2.render();
+
+
+
+
+
+			function toogleDataSeries(e) {
+				if (typeof (e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+					e.dataSeries.visible = false;
+				} else {
+					e.dataSeries.visible = true;
+				}
+				// chart.render();
+				chart2.render();
 			}
-		},
-		
-		animationEnabled: true,
-		data: [
-			{
-				name:"Temperature",
-				type: "spline", //change it to line, area, column, pie, etc
-				dataPoints: []
-			},
-			{
-				name:"Humidity",
-				type: "spline", //change it to line, area, column, pie, etc
-				dataPoints: []
-			}
-		]
-	});
-	chart.render();	
-
-
-
-		///////////////////////////////////////  <<  Chart2 PM2.5
-
-	chart2 = new CanvasJS.Chart("chartContainer2", {
-	animationEnabled: true,
-	theme: "light2",
-	title:{
-		text: "PM 1 & PM 1 & PM 10"
-	},
-	axisX:{
-		valueFormatString: "HH:mm",
-	},
-	axisY: {
-		title: "Number of Dust ug/m3",
-		suffix: " ug/m3"
-	},
-	toolTip:{
-		shared:true,
-		contentFormatter: function (e) {
-				var content = CanvasJS.formatDate(e.entries[0].dataPoint.x, "HH:mm:ss") + "<br>";
-				content += "<strong>PM 1</strong>: " + e.entries[0].dataPoint.y + " ug/m3 ";
-				content += "<strong>PM 2.5</strong>: " + e.entries[1].dataPoint.y + " ug/m3 ";
-				content += "<strong>PM 10</strong>: " + e.entries[2].dataPoint.y + " ug/m3 ";
-				return content;
-			}
-	},  
-	legend:{
-		cursor:"pointer",
-		verticalAlign: "top",
-		horizontalAlign: "center",
-		dockInsidePlotArea: true,
-		itemclick: toogleDataSeries
-	},
-	data: [{
-		type: "spline",
-		showInLegend: true,
-		name: "PM 2.5",
-		xValueFormatString: "DD MMM, YYYY",
-		yValueFormatString: "$##.## ug/m3  ",
-		dataPoints: []
-	},
-	{
-		type: "spline",
-		showInLegend: true,
-		name: "PM 10",
-		xValueFormatString: "DD MMM, YYYY",
-		yValueFormatString: "$##.## ug/m3  ",
-		dataPoints: []
-	},
-	{
-		type: "spline",
-		showInLegend: true,
-		name: "PM 1",
-		xValueFormatString: "DD MMM, YYYY",
-		yValueFormatString: "$##.## ug/m3  ",
-		dataPoints: []
-	}]
-	});
-
-	chart2.render();
-
-	
-
-
-
-function toogleDataSeries(e){
-		if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
-			e.dataSeries.visible = false;
-		} else{
-			e.dataSeries.visible = true;
-		}
-		// chart.render();
-		chart2.render();
-	}
-
-
-
-	firebase.initializeApp(config);
-		
-	var logDHT = firebase.database().ref().child("logDHT");
-	
-	logDHT.on("child_added", function(sanp) {
-		if (!newItems)  // ต่ออยู่ แต่ไม่มีข้อมูลใหม่เข้ามา
-		{
-			$("#status").removeClass("danger").addClass("success");
-			$("#status > .content").text("Up to date");
-			return;
-		} 
-		
-		var row = sanp.val();
-		var length = chart2.options.data[0].dataPoints.length;
-		
-
-
-		row.time = new Date(row.time);
-
-		chart.options.data[0].dataPoints.push({x: row.time, y: row.temperature});
-		chart.options.data[1].dataPoints.push({x: row.time, y: row.humidity});
-		chart.render();
-
-		chart2.options.data[0].dataPoints.push({x: row.time, y: row.pm1});
-		chart2.options.data[1].dataPoints.push({x: row.time, y: row.pm25});
-		chart2.options.data[2].dataPoints.push({x: row.time, y: row.pm10});
-		chart2.render();
-
-		$("#temperature > .content").html(row.temperature + " &deg;C");
-		$("#humidity > .content").text(row.humidity + " %");
-		$("#pm1 > .content").html(row.pm1 + " <small>ug/m3</small>");
-	 	$("#pm25 > .content").html(row.pm25 + " <small>ug/m3</small>");
-	 	$("#pm10 > .content").html(row.pm10 + " <small>ug/m3</small>");
-		$('#update_time').html(row.tims);
-
-		$("#status").removeClass("danger").removeClass("loading").addClass("success");
-		$("#status > .content").text("Up to date");
-
-		if (Math.round(now) -  Math.round(Arow.time) < (2 * 60 * 1000)) {
-			$("#status").removeClass("danger").removeClass("loading").addClass("success");
-			$("#status > .content").text("Up to date");
 			
-			
-		} else {
-			$("#status").removeClass("success").removeClass("loading").addClass("danger");
-			$("#status > .content").text("loading...");
-		}
 
-		if(row.pm25 >=0 && row.pm25 <=25)
-		{
-			$("#pm25").removeClass("loading","good","mediam","verybad","bad").addClass("verygood");
-		}
-		else if(row.pm25 >=26 && row.pm25 <=37)
-		{
-			$("#pm25").removeClass("loading","verygood","mediam","verybad","bad").addClass("good");
-		}
-		else if(row.pm25 >=38 && row.pm25 <=50)
-		{
-			$("#pm25").removeClass("loading","good","verygood","verybad","bad").addClass("mediam");
-		}
-		else if(row.pm25 >=51 && row.pm25 <=90)
-		{
-			$("#pm25").removeClass("loading","good","mediam","verybad","verygood").addClass("bad");
-		}
-		else if(row.pm25 > 90)
-		{
-			$("#pm25").removeClass("loading","good","mediam","bad","verygood").addClass("verybad");
-		}
+			var ctx = document.getElementById("myChart");
+			var myChart = new Chart(ctx, {
+				type: 'line',
+				data: {
+					//labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+					datasets: [{
+						//label: '# of Votes',
+						data: [12, 19, 3, 5, 2, 3],
+					}]
+				},
+				options: {
+					scales: {
+						yAxes: [{
+							ticks: {
+								beginAtZero: true
+							}
+						}]
+					}
+				}
+			});
 
-		////////////////////////////////////////////////////////////////////////////////////////////////////
-		if(row.pm10 >=0 && row.pm10 <=50)
-		{
-			$("#pm10").removeClass("loading","good","mediam","verybad","bad").addClass("verygood");
-		}
-		else if(row.pm10 >=51 && row.pm10 <=80)
-		{
-			$("#pm10").removeClass("loading","verygood","mediam","verybad","bad").addClass("good");
-		}
-		else if(row.pm10 >=81 && row.pm10 <=120)
-		{
-			$("#pm10").removeClass("loading","good","verygood","verybad","bad").addClass("mediam");
-		}
-		else if(row.pm10 >=121 && row.pm10 <=180)
-		{
-			$("#pm10").removeClass("loading","good","mediam","verybad","verygood").addClass("bad");
-		}
-		else if(row.pm10 > 180)
-		{
-			$("#pm10").removeClass("loading","good","mediam","bad","verygood").addClass("verybad");
-		}
 
-		setTimeoffline();
-	});
 
-	var now = new Date();
-	logDHT.orderByChild("time").startAt(now.getFullYear() + "-" + (now.getMonth() + 1) + "-" + now.getDate()).once("value", function(sanp) {
-		console.log(sanp);
-		newItems = true;
-		var dataRows = sanp.val();
-		var lastRows = 0;
-		$.each(dataRows, function(index, row) {
-			row.time = new Date(row.time);
-			chart.options.data[0].dataPoints.push({x: row.time, y: row.temperature});
-			chart.options.data[1].dataPoints.push({x: row.time, y: row.humidity});	
-			lastRows = row;
+			////////////////////// << ส่วน firebase 
+			firebase.initializeApp(config);
+
+			var logDHT = firebase.database().ref().child("logDHT");
+
+			logDHT.on("child_added", function (sanp) {
+				if (!newItems)  // ต่ออยู่ แต่ไม่มีข้อมูลใหม่เข้ามา
+				{
+					$("#status").removeClass("danger").addClass("success");
+					$("#status > .content").text("Up to date");
+					return;
+				}
+
+				var row = sanp.val();
+				var length = chart2.options.data[0].dataPoints.length;
+
+
+
+				row.time = new Date(row.time);
+
+				chart.options.data[0].dataPoints.push({ x: row.time, y: row.temperature });
+				chart.options.data[1].dataPoints.push({ x: row.time, y: row.humidity });
+				chart.render();
+
+				chart2.options.data[0].dataPoints.push({ x: row.time, y: row.pm1 });
+				chart2.options.data[1].dataPoints.push({ x: row.time, y: row.pm25 });
+				chart2.options.data[2].dataPoints.push({ x: row.time, y: row.pm10 });
+				chart2.render();
+
+				$("#temperature > .content").html(row.temperature + " &deg;C");
+				$("#humidity > .content").text(row.humidity + " %");
+				$("#pm1 > .content").html(row.pm1 + " <small>ug/m3</small>");
+				$("#pm25 > .content").html(row.pm25 + " <small>ug/m3</small>");
+				$("#pm10 > .content").html(row.pm10 + " <small>ug/m3</small>");
+				$('#update_time').html(row.tims);
+
+				$("#status").removeClass("danger").removeClass("loading").addClass("success");
+				$("#status > .content").text("Up to date");
+
+				if (Math.round(now) - Math.round(Arow.time) < (2 * 60 * 1000)) {
+					$("#status").removeClass("danger").removeClass("loading").addClass("success");
+					$("#status > .content").text("Up to date");
+
+
+				} else {
+					$("#status").removeClass("success").removeClass("loading").addClass("danger");
+					$("#status > .content").text("loading...");
+				}
+
+				if (row.pm25 >= 0 && row.pm25 <= 25) {
+					$("#pm25").removeClass("loading", "good", "mediam", "verybad", "bad").addClass("verygood");
+				}
+				else if (row.pm25 >= 26 && row.pm25 <= 37) {
+					$("#pm25").removeClass("loading", "verygood", "mediam", "verybad", "bad").addClass("good");
+				}
+				else if (row.pm25 >= 38 && row.pm25 <= 50) {
+					$("#pm25").removeClass("loading", "good", "verygood", "verybad", "bad").addClass("mediam");
+				}
+				else if (row.pm25 >= 51 && row.pm25 <= 90) {
+					$("#pm25").removeClass("loading", "good", "mediam", "verybad", "verygood").addClass("bad");
+				}
+				else if (row.pm25 > 90) {
+					$("#pm25").removeClass("loading", "good", "mediam", "bad", "verygood").addClass("verybad");
+				}
+
+				////////////////////////////////////////////////////////////////////////////////////////////////////
+				if (row.pm10 >= 0 && row.pm10 <= 50) {
+					$("#pm10").removeClass("loading", "good", "mediam", "verybad", "bad").addClass("verygood");
+				}
+				else if (row.pm10 >= 51 && row.pm10 <= 80) {
+					$("#pm10").removeClass("loading", "verygood", "mediam", "verybad", "bad").addClass("good");
+				}
+				else if (row.pm10 >= 81 && row.pm10 <= 120) {
+					$("#pm10").removeClass("loading", "good", "verygood", "verybad", "bad").addClass("mediam");
+				}
+				else if (row.pm10 >= 121 && row.pm10 <= 180) {
+					$("#pm10").removeClass("loading", "good", "mediam", "verybad", "verygood").addClass("bad");
+				}
+				else if (row.pm10 > 180) {
+					$("#pm10").removeClass("loading", "good", "mediam", "bad", "verygood").addClass("verybad");
+				}
+
+				setTimeoffline();
+			});
+
+			var now = new Date();
+			logDHT.orderByChild("time").startAt(now.getFullYear() + "-" + (now.getMonth() + 1) + "-" + now.getDate()).once("value", function (sanp) {
+				console.log(sanp);
+				newItems = true;
+				var dataRows = sanp.val();
+				var lastRows = 0;
+				$.each(dataRows, function (index, row) {
+					row.time = new Date(row.time);
+					chart.options.data[0].dataPoints.push({ x: row.time, y: row.temperature });
+					chart.options.data[1].dataPoints.push({ x: row.time, y: row.humidity });
+					lastRows = row;
+				});
+				chart.render();
+				var length = chart2.options.data[0].dataPoints.length;
+				$.each(dataRows, function (index, row) {
+					chart2.options.data[0].dataPoints.push({ x: row.time, y: row.pm1 });
+					chart2.options.data[1].dataPoints.push({ x: row.time, y: row.pm25 });
+					chart2.options.data[2].dataPoints.push({ x: row.time, y: row.pm10 });
+				});
+				chart2.render();
+
+				var Arow = lastRows;
+				$("#temperature > .content").html(Arow.temperature + " &deg;C");
+				$("#humidity > .content").text(Arow.humidity + " %");
+				$("#pm1 > .content").html(Arow.pm1 + " <small>ug/m3</small>");
+				$("#pm25 > .content").html(Arow.pm25 + " <small>ug/m3</small>");
+				$("#pm10 > .content").html(Arow.pm10 + " <small>ug/m3</small>");
+				$('#update_time').html(Arow.tims);
+				$("#temperature").removeClass("loading").addClass("primary");
+				$("#humidity").removeClass("loading").addClass("info");
+				$("#pm1").removeClass("loading").addClass("pm1");
+
+				var now = new Date();
+				Arow.time = new Date(Arow.time);
+
+				if (Math.round(now) - Math.round(Arow.time) < (2 * 60 * 1000)) {
+					$("#status").removeClass("loading").removeClass("danger").addClass("success");
+					$("#status > .content").text("Up to date"); // ไม่มีอุปกรณ์มาต่อเลย
+				} else {
+					$("#status").removeClass("loading").removeClass("success").addClass("danger");
+					$("#status > .content").html("Updating...");   // ต่อ แต่ไม่มีไอเทม
+				}
+
+				if (Arow.pm25 >= 0 && Arow.pm25 <= 25) {
+					$("#pm25").removeClass("loading", "good", "mediam", "verybad", "bad").addClass("verygood");
+				}
+				else if (Arow.pm25 >= 26 && Arow.pm25 <= 37) {
+					$("#pm25").removeClass("loading", "verygood", "mediam", "verybad", "bad").addClass("good");
+				}
+				else if (Arow.pm25 >= 38 && Arow.pm25 <= 50) {
+					$("#pm25").removeClass("loading", "good", "verygood", "verybad", "bad").addClass("mediam");
+				}
+				else if (Arow.pm25 >= 51 && Arow.pm25 <= 90) {
+					$("#pm25").removeClass("loading", "good", "mediam", "verybad", "verygood").addClass("bad");
+				}
+				else if (Arow.pm25 > 90) {
+					$("#pm25").removeClass("loading", "good", "mediam", "bad", "verygood").addClass("verybad");
+				}
+
+				////////////////////////////////////////////////////////////////////////////////////////////////////
+				if (Arow.pm10 >= 0 && Arow.pm10 <= 50) {
+					$("#pm10").removeClass("loading", "good", "mediam", "verybad", "bad").addClass("verygood");
+				}
+				else if (Arow.pm10 >= 51 && Arow.pm10 <= 80) {
+					$("#pm10").removeClass("loading", "verygood", "mediam", "verybad", "bad").addClass("good");
+				}
+				else if (Arow.pm10 >= 81 && Arow.pm10 <= 120) {
+					$("#pm10").removeClass("loading", "good", "verygood", "verybad", "bad").addClass("mediam");
+				}
+				else if (Arow.pm10 >= 121 && Arow.pm10 <= 180) {
+					$("#pm10").removeClass("loading", "good", "mediam", "verybad", "verygood").addClass("bad");
+				}
+				else if (Arow.pm10 > 180) {
+					$("#pm10").removeClass("loading", "good", "mediam", "bad", "verygood").addClass("verybad");
+				}
+
+				setTimeoffline();
+			});
+
 		});
-		chart.render();
-		var length = chart2.options.data[0].dataPoints.length;
-		$.each(dataRows, function(index, row) {
-			chart2.options.data[0].dataPoints.push({x: row.time, y: row.pm1});
-			chart2.options.data[1].dataPoints.push({x: row.time, y: row.pm25});
-			chart2.options.data[2].dataPoints.push({x: row.time, y: row.pm10});
+
+		var setTimeoffline = function () {   // ถ้าไม่มีการเชื่อมต่อ
+			if (typeof toOffline === "number") clearTimeout(toOffline);
+
+			toOffline = setTimeout(function () {
+				$("#status").removeClass("danger").removeClass("loading").addClass("success");
+				$("#status > .content").text("Up to date");
+			}, 2 * 60 * 1000);
+		}
+
+		$(document).ready(function () {
+			$("#flip").click(function () {
+				$("#panel").slideToggle("slow");
+			});
 		});
-		chart2.render();
-		
-		var Arow = lastRows;
-		$("#temperature > .content").html(Arow.temperature + " &deg;C");
-		$("#humidity > .content").text(Arow.humidity + " %");
-		$("#pm1 > .content").html(Arow.pm1 + " <small>ug/m3</small>");
-	 	$("#pm25 > .content").html(Arow.pm25 + " <small>ug/m3</small>");
-	 	$("#pm10 > .content").html(Arow.pm10 + " <small>ug/m3</small>");
-		$('#update_time').html(Arow.tims);
-		$("#temperature").removeClass("loading").addClass("primary");
-		$("#humidity").removeClass("loading").addClass("info");
-		$("#pm1").removeClass("loading").addClass("pm1");
-	
-		var now = new Date();
-		Arow.time = new Date(Arow.time);
-		
-		if (Math.round(now) -  Math.round(Arow.time) < (2 * 60 * 1000)) {
-		$("#status").removeClass("loading").removeClass("danger").addClass("success");
-		$("#status > .content").text("Up to date"); // ไม่มีอุปกรณ์มาต่อเลย
-		} else {
-			$("#status").removeClass("loading").removeClass("success").addClass("danger");
-			$("#status > .content").html("Updating...");   // ต่อ แต่ไม่มีไอเทม
+
+		var pmchart = [];
+		logDHT.once('value').then(function(snapshot){
+			pmchart.push(snapshot.val()['PM 2.5']);
+			pmchart.push(snapshot.val()['PM 1']);
+			pmchart.push(snapshot.val()['PM 10']);
+		})
+		console.log(pmchart);
+		var ctx = document.getElementById("myChart4").getContext('2d');
+		var myChart = new Chart(ctx, {
+				type: 'line',
+				data: {
+					//labels: ["PM 2.5", "Female", "Non-Binary", "Other", "Unspecified"],
+					datasets: [{
+						data: pmchart,
+					}]
+				},
+				options: {
+					title: {
+						display: true,
+						text: 'Total Students by Time Taken to Complete Degree'
+					},
+					legend: {
+						display: false
+					},
+					scales: {
+						yAxes: [{
+							ticks: {
+								beginAtZero: true
+							}
+						}]
+					}
+				}
+			});
+
+	</script>
+
+	<style>
+		.dialog {
+
+			width: 100%;
+			border-radius: 4px;
+			margin-bottom: 20px;
+			box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.12), 0 1px 6px 0 rgba(0, 0, 0, 0.12);
 		}
 
-		if(Arow.pm25 >=0 && Arow.pm25 <=25)
-		{
-			$("#pm25").removeClass("loading","good","mediam","verybad","bad").addClass("verygood");
-		}
-		else if(Arow.pm25 >=26 && Arow.pm25 <=37)
-		{
-			$("#pm25").removeClass("loading","verygood","mediam","verybad","bad").addClass("good");
-		}
-		else if(Arow.pm25 >=38 && Arow.pm25 <=50)
-		{
-			$("#pm25").removeClass("loading","good","verygood","verybad","bad").addClass("mediam");
-		}
-		else if(Arow.pm25 >=51 && Arow.pm25 <=90)
-		{
-			$("#pm25").removeClass("loading","good","mediam","verybad","verygood").addClass("bad");
-		}
-		else if(Arow.pm25 > 90)
-		{
-			$("#pm25").removeClass("loading","good","mediam","bad","verygood").addClass("verybad");
+		.dialog>.content {
+			padding: 30px 0;
+			border-radius: 6px 6px 0 0;
+			font-size: 50px;
+			color: #ffffffd6;
+			text-align: center;
+			font-family: 'Open Sans', sans-serif;
+			font-family: 'Sarabun', sans-serif;
 		}
 
-		////////////////////////////////////////////////////////////////////////////////////////////////////
-		if(Arow.pm10 >=0 && Arow.pm10 <=50)
-		{
-			$("#pm10").removeClass("loading","good","mediam","verybad","bad").addClass("verygood");
+		.dialog.primary>.content {
+			background: #00aa9a;
 		}
-		else if(Arow.pm10 >=51 && Arow.pm10 <=80)
-		{
-			$("#pm10").removeClass("loading","verygood","mediam","verybad","bad").addClass("good");
+
+		.dialog.pm1>.content {
+			background: #9c154d;
 		}
-		else if(Arow.pm10 >=81 && Arow.pm10 <=120)
-		{
-			$("#pm10").removeClass("loading","good","verygood","verybad","bad").addClass("mediam");
+
+		.dialog.success>.content {
+			background: #59b75c;
 		}
-		else if(Arow.pm10 >=121 && Arow.pm10 <=180)
-		{
-			$("#pm10").removeClass("loading","good","mediam","verybad","verygood").addClass("bad");
+
+		.dialog.info>.content {
+			background: #03a9f4;
 		}
-		else if(Arow.pm10 > 180)
-		{
-			$("#pm10").removeClass("loading","good","mediam","bad","verygood").addClass("verybad");
+
+		.dialog.warning>.content {
+			background: #ff5722;
 		}
-	
-		setTimeoffline();
-	});
 
-});
+		.dialog.danger>.content {
+			background: #f44336;
+		}
 
-var setTimeoffline = function() {   // ถ้าไม่มีการเชื่อมต่อ
-	if (typeof toOffline === "number") clearTimeout(toOffline);
-	
-	toOffline = setTimeout(function() {
-		$("#status").removeClass("danger").removeClass("loading").addClass("success");
-		$("#status > .content").text("Up to date");
-	}, 2 * 60 * 1000);
-}
+		.dialog.verygood>.content {
+			background: #08b3e7;
+		}
 
-$(document).ready(function(){
-  $("#flip").click(function(){
-    $("#panel").slideToggle("slow");
-  });
-});
+		.dialog.good>.content {
+			background: #4fa535;
+		}
 
+		.dialog.mediam>.content {
+			background: #fbff00;
+			color: rgba(58, 58, 58, 0.84);
+		}
 
-</script>
+		.dialog.bad>.content {
+			background: #db8503;
+		}
 
-<style>
-.dialog {
-	
-	width: 100%;
-	border-radius: 4px;
-	margin-bottom: 20px;
-	box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.12), 0 1px 6px 0 rgba(0, 0, 0, 0.12);
-}
-.dialog > .content {
-	padding: 30px 0;
-	border-radius: 6px 6px 0 0;
-	font-size: 50px;
-	color: #ffffffd6;
-	text-align: center;
-	font-family: 'Open Sans', sans-serif;
-	font-family: 'Sarabun', sans-serif;
-}
+		.dialog.verybad>.content {
+			background: #ec0f0f;
+		}
 
-.dialog.primary > .content{
-	background: #00aa9a;
-}
-.dialog.pm1 > .content{
-	background: #9c154d;
-}
-.dialog.success > .content {
-	background: #59b75c;
-}
-.dialog.info > .content {
-	background: #03a9f4;
-}
-.dialog.warning > .content {
-	background: #ff5722;
-}
-
-.dialog.danger > .content {
-	background: #f44336;
-}
-
-.dialog.verygood > .content {
-	background: #08b3e7;
-}
-.dialog.good > .content {
-	background: #4fa535;
-}
-.dialog.mediam > .content {
-	background: #fbff00;
-	color: rgba(58, 58, 58, 0.84);
-}
-.dialog.bad > .content {
-	background: #db8503;
-}
-.dialog.verybad > .content {
-	background: #ec0f0f;
-}
-
-.dialog.loading > .content {
-	background: #757575;
-}
+		.dialog.loading>.content {
+			background: #757575;
+		}
 
 
-.dialog > .title {
-	font-family: 'Open Sans', sans-serif;
-	font-family: 'Sarabun', sans-serif;
-	background: #FFF;
-	border-radius: 0 0 6px 6px;
-	font-size: 22px;
-	color: #000000de;
-	text-align: center;
-	padding: 10px 0;
-	box-shadow: 0px 10px 8px -10px rgba(0, 0, 0, 0.4) inset;
-	font-weight: bold;
-}
+		.dialog>.title {
+			font-family: 'Open Sans', sans-serif;
+			font-family: 'Sarabun', sans-serif;
+			background: #FFF;
+			border-radius: 0 0 6px 6px;
+			font-size: 22px;
+			color: #000000de;
+			text-align: center;
+			padding: 10px 0;
+			box-shadow: 0px 10px 8px -10px rgba(0, 0, 0, 0.4) inset;
+			font-weight: bold;
+		}
 
-h1,h2,h3,h4,h5,li{
-	font-family: 'Open Sans', sans-serif;
-	font-family: 'Sarabun', sans-serif;
-}
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		li {
+			font-family: 'Open Sans', sans-serif;
+			font-family: 'Sarabun', sans-serif;
+		}
 
-.nav-tabs {
-	margin-bottom: 20px;
-}
+		.nav-tabs {
+			margin-bottom: 20px;
+		}
 
-table, th, td {
-  border: 1px solid black;
-  border-collapse: collapse;
-}
+		table,
+		th,
+		td {
+			border: 1px solid black;
+			border-collapse: collapse;
+		}
 
-th{
-	text-align: center;
-  	padding: 15px;
-}
-td{
-	padding: 15px;
-	text-align: left;
-}
-.white{
-	color:rgb(255, 255, 255);
-}
+		th {
+			text-align: center;
+			padding: 15px;
+		}
 
-#panel, #flip {
-  padding: 5px;
-  text-align: center;
-  background-color: #FFFACD;
-  border: solid 1px #BEBEBE;
-}
+		td {
+			padding: 15px;
+			text-align: left;
+		}
 
-#panel {
-  padding: 50px;
-  display: none;
-}
+		.white {
+			color: rgb(255, 255, 255);
+		}
 
-img{
-	pointer-events: none;
-}
+		#panel,
+		#flip {
+			padding: 5px;
+			text-align: center;
+			background-color: #FFFACD;
+			border: solid 1px #BEBEBE;
+		}
 
+		#panel {
+			padding: 50px;
+			display: none;
+		}
 
-
-</style>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ChartJs</title>
+		img {
+			pointer-events: none;
+		}
+	</style>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>ChartJs</title>
 </head>
 
 <body>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.js"></script>
-		
-  <div class="container">
-	  <br>
-    <p><FONT SIZE = 5><b>Temperature &amp; <small>Dust Detector Dashboard | Yodsarun</small></b></FONT></p>
-    <!-- <hr /> -->
-     
-    <!-- Nav tabs -->
-    <ul class="nav nav-tabs" role="tablist">
-      <li role="presentation" class="active"><a href="#overview" aria-controls="home" role="tab" data-toggle="tab">Overview</a></li>
-      <li role="presentation"><a href="#history" aria-controls="profile" role="tab" data-toggle="tab">History</a></li>
-    </ul> 
-	<center> <FONT SIZE=3 > <div style="display: inline"><img src="image/refresh.png" style="width:30px;height:30px;"> Last update <div style="display: inline" id="update_time">Loading...</div></div></FONT></center>
-	
-	<br>
-    <!-- Tab panes -->
-    <div class="tab-content">
-      <div role="tabpanel" class="tab-pane active" id="overview">
-        <div class="row">
-           <div class="col-sm-4">
-             <div class="dialog primary fadeIn animated" id="temperature">
-               <div class="content">loading..</div>
-               <div class="title">Temperature</div>
-             </div>
-           </div>
-           <div class="col-sm-4">
-             <div class="dialog info fadeIn animated" id="humidity">
-               <div class="content">loading..</div>
-               <div class="title">Humidity</div>
-             </div>
-           </div>
-           <div class="col-sm-4">
-             <div class="dialog success fadeIn animated" id="status">
-			   <div class="content">loading..</div>
-               <div class="title">Status</div>
-             </div>
-			</div>
-			<div class="col-sm-4">
-				<div class="dialog success fadeIn animated" id="pm1">
-				  <div class="content">loading..</div>
-				  <div class="title">PM 1</div>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.js"></script>
+
+	<div class="container">
+		<br>
+		<p>
+			<FONT SIZE=5><b>Temperature &amp; <small>Dust Detector Dashboard | Yodsarun</small></b></FONT>
+		</p>
+		<!-- <hr /> -->
+
+		<!-- Nav tabs -->
+		<ul class="nav nav-tabs" role="tablist">
+			<li role="presentation" class="active"><a href="#overview" aria-controls="home" role="tab" data-toggle="tab">Overview</a></li>
+			<li role="presentation"><a href="#history" aria-controls="profile" role="tab" data-toggle="tab">History</a></li>
+		</ul>
+		<center>
+			<FONT SIZE=3>
+				<div style="display: inline"><img src="image/refresh.png" style="width:30px;height:30px;"> Last update <div style="display: inline"
+					 id="update_time">Loading...</div>
 				</div>
-			</div>
-			<div class="col-sm-4">
-				<div class="dialog success fadeIn animated" id="pm25">
-				  <div class="content">loading..</div>
-				  <div class="title">PM 2.5</div>
+			</FONT>
+		</center>
+
+		<br>
+		<!-- Tab panes -->
+		<div class="tab-content">
+			<div role="tabpanel" class="tab-pane active" id="overview">
+				<div class="row">
+					<div class="col-sm-4">
+						<div class="dialog primary fadeIn animated" id="temperature">
+							<div class="content">loading..</div>
+							<div class="title">Temperature</div>
+						</div>
+					</div>
+					<div class="col-sm-4">
+						<div class="dialog info fadeIn animated" id="humidity">
+							<div class="content">loading..</div>
+							<div class="title">Humidity</div>
+						</div>
+					</div>
+					<div class="col-sm-4">
+						<div class="dialog success fadeIn animated" id="status">
+							<div class="content">loading..</div>
+							<div class="title">Status</div>
+						</div>
+					</div>
+					<div class="col-sm-4">
+						<div class="dialog success fadeIn animated" id="pm1">
+							<div class="content">loading..</div>
+							<div class="title">PM 1</div>
+						</div>
+					</div>
+					<div class="col-sm-4">
+						<div class="dialog success fadeIn animated" id="pm25">
+							<div class="content">loading..</div>
+							<div class="title">PM 2.5</div>
+						</div>
+					</div>
+					<div class="col-sm-4">
+						<div class="dialog success fadeIn animated" id="pm10">
+							<div class="content">loading..</div>
+							<div class="title">PM 10</div>
+						</div>
+					</div>
 				</div>
-			</div>
-			<div class="col-sm-4">
-				<div class="dialog success fadeIn animated" id="pm10">
-				  <div class="content">loading..</div>
-				  <div class="title">PM 10</div>
-				</div>
-			</div>
-		</div>
 
 
 				<!-- <img src=image/aqi.png width="70%" > -->
-			
-		<!-- <div id="flip" weight="30%"><img src="image/info.png" style="width:20px;height:20px;">  <u>ตารางคุณภาพอากาศกับกรมควบคุมมลพิษ</u></div>
+
+				<!-- <div id="flip" weight="30%"><img src="image/info.png" style="width:20px;height:20px;">  <u>ตารางคุณภาพอากาศกับกรมควบคุมมลพิษ</u></div>
 		<div id="panel">
 			<center><table style="width:100%;">
 					<tr bgcolor="#FFFFFF">
@@ -611,64 +672,30 @@ img{
 				<!-- <center><div id="chartContainer2" style="height: 300px; width: 70%;"></div>
 				<br>
 				<center><div id="chartContainer" style="height: 300px; width: 70%;"></div></center> -->
-      </div>
-    <div role="tabpanel" class="tab-pane" id="history">
-		<div class="row">
-			<center><div id="chartContainer" style="height: 300px; width: 70%;"></div></center>
-			
-		</div>
-		<br>
-		<div class="row">
-			<center><div id="chartContainer2" style="height: 300px; width: 70%;"></div></center>
-		</div> 
-		<br>
-		<div class="row">
-		<canvas id="myChart" style="height:300px; width: 70%"></canvas>
-		<script>
-				var ctx = document.getElementById("myChart");
-				var myChart = new Chart(ctx, {
-					type: 'line',
-					data: {
-						labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-						datasets: [{
-							label: '# of Votes',
-							data: [12, 19, 3, 5, 2, 3],
-							backgroundColor: [
-								'rgba(255, 99, 132, 0.2)',
-								'rgba(54, 162, 235, 0.2)',
-								'rgba(255, 206, 86, 0.2)',
-								'rgba(75, 192, 192, 0.2)',
-								'rgba(153, 102, 255, 0.2)',
-								'rgba(255, 159, 64, 0.2)'
-							],
-							borderColor: [
-								'rgba(255,99,132,1)',
-								'rgba(54, 162, 235, 1)',
-								'rgba(255, 206, 86, 1)',
-								'rgba(75, 192, 192, 1)',
-								'rgba(153, 102, 255, 1)',
-								'rgba(255, 159, 64, 1)'
-							],
-							borderWidth: 1
-						}]
-					},
-					options: {
-						scales: {
-							yAxes: [{
-								ticks: {
-									beginAtZero:true
-								}
-							}]
-						}
-					}
-				});
-				</script>	
-		
+			</div>
+			<div role="tabpanel" class="tab-pane" id="history">
+				<div class="row">
+					<center>
+						<div id="chartContainer" style="height: 300px; width: 70%;"></div>
+					</center>
 
-    </div>
-	</div>
-		
-  </div>
+				</div>
+				<br>
+				<div class="row">
+					<center>
+						<div id="chartContainer2" style="height: 300px; width: 70%;"></div>
+					</center>
+				</div>
+				<br>
+				<div class="row">
+					<canvas id="myChart4" style="height:300px; width: 70%"></canvas>
+
+
+
+				</div>
+			</div>
+
+		</div>
 </body>
 
 
