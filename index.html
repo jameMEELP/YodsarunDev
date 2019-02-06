@@ -95,7 +95,7 @@ $(document).ready(function(e) {
 
 
 		///////////////////////////////////////  <<  Chart2 PM2.5
-	window.onload = function () {
+
 	chart2 = new CanvasJS.Chart("chartContainer2", {
 	animationEnabled: true,
 	theme: "light2",
@@ -160,7 +160,6 @@ $(document).ready(function(e) {
 			e.dataSeries.visible = true;
 		}
 		chart2.render();
-	}
 	}
 	
 	firebase.initializeApp(config);
