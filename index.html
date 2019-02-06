@@ -171,44 +171,6 @@ function toogleDataSeries(e){
 		chart2.render();
 	}
 
-window.onload = function () {
-
-var options = {
-	animationEnabled: true,  
-	title:{
-		text: "Monthly Sales - 2017"
-	},
-	axisX: {
-		valueFormatString: "MMM"
-	},
-	axisY: {
-		title: "Sales (in USD)",
-		prefix: "$",
-		includeZero: false
-	},
-	data: [{
-		yValueFormatString: "$#,###",
-		xValueFormatString: "MMMM",
-		type: "spline",
-		dataPoints: [
-			{ x: new Date(2017, 0), y: 25060 },
-			{ x: new Date(2017, 1), y: 27980 },
-			{ x: new Date(2017, 2), y: 33800 },
-			{ x: new Date(2017, 3), y: 49400 },
-			{ x: new Date(2017, 4), y: 40260 },
-			{ x: new Date(2017, 5), y: 33900 },
-			{ x: new Date(2017, 6), y: 48000 },
-			{ x: new Date(2017, 7), y: 31500 },
-			{ x: new Date(2017, 8), y: 32300 },
-			{ x: new Date(2017, 9), y: 42000 },
-			{ x: new Date(2017, 10), y: 52160 },
-			{ x: new Date(2017, 11), y: 49400 }
-		]
-	}]
-};
-$("#chartContainer3").CanvasJSChart(options);
-
-}
 
 
 	firebase.initializeApp(config);
@@ -651,7 +613,7 @@ img{
 		</div>
 		<br>
 		<div class="row">
-			<center><div id="chartContainer3" style="height: 300px; width: 70%;"></div></center>
+			<center><div id="chartContainer2" style="height: 300px; width: 70%;"></div></center>
 		</div> 
 
     </div>
