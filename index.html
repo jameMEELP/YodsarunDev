@@ -13,8 +13,6 @@
 
 <!-- canvasjs -->
 <script src="js/jquery.canvasjs.min.js"></script>
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-
 
 
 
@@ -33,33 +31,7 @@
 <!-- Animate.css -->
 <link rel="stylesheet" href="css/animate.min.css">
 
-	
-
-
 <script>
-
-google.charts.load('current', {'packages':['corechart']});
-	google.charts.setOnLoadCallback(drawChart);
-
-	function drawChart() {
-	  var data = google.visualization.arrayToDataTable([
-		['Year', 'Sales', 'Expenses'],
-		['2004',  1000,      400],
-		['2005',  1170,      460],
-		['2006',  660,       1120],
-		['2007',  1030,      540]
-	  ]);
-
-	  var options = {
-		title: 'Company Performance',
-		curveType: 'function',
-		legend: { position: 'bottom' }
-	  };
-
-	  var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
-
-	  chart.draw(data, options);
-	}
 	
 var chart, toOffline;
 var chart2;
@@ -376,22 +348,62 @@ $(document).ready(function(e) {
 
 });
 
-var setTimeoffline = function() {   // ถ้าไม่มีการเชื่อมต่อ
-	if (typeof toOffline === "number") clearTimeout(toOffline);
-	
-	toOffline = setTimeout(function() {
-		$("#status").removeClass("danger").removeClass("loading").addClass("success");
-		$("#status > .content").text("Up to date");
-	}, 2 * 60 * 1000);
-}
+	var setTimeoffline = function() {   // ถ้าไม่มีการเชื่อมต่อ
+		if (typeof toOffline === "number") clearTimeout(toOffline);
+		
+		toOffline = setTimeout(function() {
+			$("#status").removeClass("danger").removeClass("loading").addClass("success");
+			$("#status > .content").text("Up to date");
+		}, 2 * 60 * 1000);
+	}
 
-$(document).ready(function(){
-  $("#flip").click(function(){
-    $("#panel").slideToggle("slow");
+	$(document).ready(function(){
+	$("#flip").click(function(){
+		$("#panel").slideToggle("slow");
+	});
+	});
+
+	// chart colors
+var colors = ['#007bff','#28a745','#333333','#c3e6cb','#dc3545','#6c757d'];
+
+/* large line chart */
+var chLine = document.getElementById("chLine");
+var chartData = {
+  labels: ["S", "M", "T", "W", "T", "F", "S"],
+  datasets: [{
+    data: [589, 445, 483, 503, 689, 692, 634],
+    backgroundColor: 'transparent',
+    borderColor: colors[0],
+    borderWidth: 4,
+    pointBackgroundColor: colors[0]
+  },
+  {
+    data: [639, 465, 493, 478, 589, 632, 674],
+    backgroundColor: colors[3],
+    borderColor: colors[1],
+    borderWidth: 4,
+    pointBackgroundColor: colors[1]
+  }]
+};
+
+if (chLine) {
+  new Chart(chLine, {
+  type: 'line',
+  data: chartData,
+  options: {
+    scales: {
+      yAxes: [{
+        ticks: {
+          beginAtZero: false
+        }
+      }]
+    },
+    legend: {
+      display: false
+    }
+  }
   });
-});
-
-
+}
 </script>
 
 <style>
@@ -633,9 +645,24 @@ img{
 			<center><div id="chartContainer2" style="height: 300px; width: 70%;"></div></center>
 		</div> 
 		<br>
-		<div class="row">
-			<center><div id="curve_chart" style="width: 70%; height: 300px"></div></center>
-		</div>
+		<!-- <div class="row"> -->
+				<div class="container">
+						<div class="row my-3">
+							<div class="col">
+								<h4>Bootstrap 4 Chart.js - Line Chart</h4>
+							</div>
+						</div>
+						<div class="row my-2">
+							<div class="col-md-12">
+								<div class="card">
+									<div class="card-body">
+										<canvas id="chLine" height="100"></canvas>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+		<!-- </div>  -->
     </div>
 	</div>
 		
