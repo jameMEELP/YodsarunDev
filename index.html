@@ -13,7 +13,8 @@
 
 <!-- canvasjs -->
 <script src="js/jquery.canvasjs.min.js"></script>
-
+<script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+<script src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
 
 
 <!-- Material Design fonts -->
@@ -57,7 +58,7 @@ $(document).ready(function(e) {
 	$("#pm10").addClass("loading");
 
 	chart = new CanvasJS.Chart("chartContainer", {
-		//theme: "light2",
+		theme: "light2",
 		title: {
 			text: "Temperature & Humidityhhh"
 		},
@@ -100,6 +101,7 @@ $(document).ready(function(e) {
 
 	chart2 = new CanvasJS.Chart("chartContainer2", {
 	animationEnabled: true,
+	theme: "light2",
 	title:{
 		text: "PM 1 & PM 1 & PM 10"
 	},
