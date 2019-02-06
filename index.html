@@ -502,7 +502,6 @@ img{
 </head>
 
 <body>
-		<canvas id="myChart" style="height:300px; width: 70%"></canvas>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.js"></script>
 		
   <div class="container">
@@ -623,7 +622,8 @@ img{
 			<center><div id="chartContainer2" style="height: 300px; width: 70%;"></div></center>
 		</div> 
 		<br>
-		<div>
+		<div class="row">
+		<canvas id="myChart" style="height:300px; width: 70%"></canvas>
 		<script>
 				var ctx = document.getElementById("myChart");
 				var myChart = new Chart(ctx, {
@@ -663,7 +663,6 @@ img{
 					}
 				});
 				</script>	
-				</div>
 		
 
     </div>
