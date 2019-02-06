@@ -217,8 +217,8 @@ function toogleDataSeries(e){
 			
 			
 		} else {
-			$("#status").removeClass("danger").removeClass("loading").addClass("success");
-			$("#status > .content").text("Up to date");
+			$("#status").removeClass("success").removeClass("loading").addClass("danger");
+			$("#status > .content").text("loading...");
 		}
 
 		if(row.pm25 >=0 && row.pm25 <=25)
