@@ -301,16 +301,13 @@ function toogleDataSeries(e){
 	
 		var now = new Date();
 		Arow.time = new Date(Arow.time);
-		$("#status").removeClass("loading").removeClass("success").addClass("danger");
-		$("#status > .content").html("<small>Updating Data..</small>");
-
 		
 		if (Math.round(now) -  Math.round(Arow.time) < (2 * 60 * 1000)) {
 		$("#status").removeClass("loading").removeClass("danger").addClass("success");
 		$("#status > .content").text("Up to date"); // ไม่มีอุปกรณ์มาต่อเลย
 		} else {
-			$("#status").removeClass("loading").removeClass("danger").addClass("success");
-			$("#status > .content").html("<small>Updating Data..</small>");   // ต่อ แต่ไม่มีไอเทม
+			$("#status").removeClass("loading").removeClass("success").addClass("danger");
+			$("#status > .content").html("Updating...");   // ต่อ แต่ไม่มีไอเทม
 		}
 
 		if(Arow.pm25 >=0 && Arow.pm25 <=25)
