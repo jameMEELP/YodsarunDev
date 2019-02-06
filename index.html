@@ -35,6 +35,7 @@
 	
 var chart, toOffline;
 var chart2;
+var chart3;
 var newItems = false;
 // Initialize Firebase
 var config = {
@@ -160,11 +161,13 @@ $(document).ready(function(e) {
 		} else{
 			e.dataSeries.visible = true;
 		}
+		chart.render();
 		chart2.render();
+		chart3.render();
 	}
 	
 
-	var chart3 = new CanvasJS.Chart("chartContainer3", {
+	chart3 = new CanvasJS.Chart("chartContainer3", {
 	animationEnabled: true,
 	zoomEnabled: true,
 	theme: "dark2",
