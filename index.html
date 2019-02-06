@@ -56,6 +56,7 @@ $(document).ready(function(e) {
 	$("#pm10").addClass("loading");
 
 	chart = new CanvasJS.Chart("chartContainer", {
+		theme: "light2",
 		title: {
 			text: "Temperature & Humidityhhh"
 		},
@@ -207,7 +208,8 @@ $(document).ready(function(e) {
 	legend:{
 		verticalAlign: "top",
 		fontSize: 16,
-		dockInsidePlotArea: true
+		dockInsidePlotArea: true,
+		itemclick: toogleDataSeries
 	},
 	data: [{
 		type: "spline",
