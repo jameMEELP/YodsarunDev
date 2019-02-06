@@ -291,9 +291,9 @@ function toogleDataSeries(e){
 		var Arow = lastRows;
 		$("#temperature > .content").html(Arow.temperature + " &deg;C");
 		$("#humidity > .content").text(Arow.humidity + " %");
-		$("#pm1 > .content").html(Arow.pm1 + " ug/m3");
-	 	$("#pm25 > .content").html(Arow.pm25 + " ug/m3");
-	 	$("#pm10 > .content").html(Arow.pm10 + " ug/m3");
+		$("#pm1 > .content").html(Arow.pm1 + " <small>ug/m3</small>");
+	 	$("#pm25 > .content").html(Arow.pm25 + " <small>ug/m3</small>");
+	 	$("#pm10 > .content").html(Arow.pm10 + " <small>ug/m3</small>");
 		$('#update_time').html(Arow.tims);
 		$("#temperature").removeClass("loading").addClass("primary");
 		$("#humidity").removeClass("loading").addClass("info");
