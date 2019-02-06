@@ -181,7 +181,7 @@ function toogleDataSeries(e){
 		if (!newItems)  // ต่ออยู่ แต่ไม่มีข้อมูลใหม่เข้ามา
 		{
 			$("#status").removeClass("danger").addClass("success");
-			$("#status > .content").text("Up to date 1");
+			$("#status > .content").text("Up to date");
 			return;
 		} 
 		
@@ -203,22 +203,22 @@ function toogleDataSeries(e){
 
 		$("#temperature > .content").html(row.temperature + " &deg;C");
 		$("#humidity > .content").text(row.humidity + " %");
-		$("#pm1 > .content").html(row.pm1 + " ug/m3");
-	 	$("#pm25 > .content").html(row.pm25 + " ug/m3");
-	 	$("#pm10 > .content").html(row.pm10 + " ug/m3");
+		$("#pm1 > .content").html(row.pm1 + " <small>ug/m3</small>");
+	 	$("#pm25 > .content").html(row.pm25 + " <small>ug/m3</small>");
+	 	$("#pm10 > .content").html(row.pm10 + " <small>ug/m3</small>");
 		$('#update_time').html(row.tims);
 
 		$("#status").removeClass("danger").removeClass("loading").addClass("success");
-		$("#status > .content").text("Up to date 2 ");
+		$("#status > .content").text("Up to date");
 
 		if (Math.round(now) -  Math.round(Arow.time) < (2 * 60 * 1000)) {
 			$("#status").removeClass("danger").removeClass("loading").addClass("success");
-			$("#status > .content").text("Up to date 3 ");
+			$("#status > .content").text("Up to date");
 			
 			
 		} else {
 			$("#status").removeClass("danger").removeClass("loading").addClass("success");
-			$("#status > .content").text("Up to date 4");
+			$("#status > .content").text("Up to date");
 		}
 
 		if(row.pm25 >=0 && row.pm25 <=25)
@@ -305,10 +305,10 @@ function toogleDataSeries(e){
 
 		if (Math.round(now) -  Math.round(Arow.time) < (2 * 60 * 1000)) {
 		$("#status").removeClass("loading").removeClass("danger").addClass("success");
-		$("#status > .content").text("Up to date 5"); // ไม่มีอุปกรณ์มาต่อเลย
+		$("#status > .content").text("Up to date"); // ไม่มีอุปกรณ์มาต่อเลย
 		} else {
 			$("#status").removeClass("loading").removeClass("success").addClass("danger");
-			$("#status > .content").text("Device Online");   // ต่อ แต่ไม่มีไอเทม
+			$("#status > .content").text("Refresh Data...");   // ต่อ แต่ไม่มีไอเทม
 		}
 
 		if(Arow.pm25 >=0 && Arow.pm25 <=25)
@@ -364,7 +364,7 @@ var setTimeoffline = function() {   // ถ้าไม่มีการเช�
 	
 	toOffline = setTimeout(function() {
 		$("#status").removeClass("danger").removeClass("loading").addClass("success");
-		$("#status > .content").text("Up to date 6");
+		$("#status > .content").text("Up to date");
 	}, 2 * 60 * 1000);
 }
 
