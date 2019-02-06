@@ -302,16 +302,16 @@ function toogleDataSeries(e){
 		var now = new Date();
 		Arow.time = new Date(Arow.time);
 		$("#status").removeClass("loading").removeClass("success").addClass("danger");
-		$("#status > .content").text("Updating...");
+		$("#status > .content").text("<small>Updating Data..</small>");
 
 		
-		if (Math.round(now) -  Math.round(Arow.time) < (2 * 60 * 1000)) {
-		$("#status").removeClass("loading").removeClass("danger").addClass("success");
-		$("#status > .content").text("Up to date"); // ไม่มีอุปกรณ์มาต่อเลย
-		} else {
-			$("#status").removeClass("loading").removeClass("danger").addClass("success");
-			$("#status > .content").text("New Data!!");   // ต่อ แต่ไม่มีไอเทม
-		}
+		// if (Math.round(now) -  Math.round(Arow.time) < (2 * 60 * 1000)) {
+		// $("#status").removeClass("loading").removeClass("danger").addClass("success");
+		// $("#status > .content").text("Up to date"); // ไม่มีอุปกรณ์มาต่อเลย
+		// } else {
+		// 	$("#status").removeClass("loading").removeClass("danger").addClass("success");
+		// 	$("#status > .content").text("Up to date...");   // ต่อ แต่ไม่มีไอเทม
+		// }
 
 		if(Arow.pm25 >=0 && Arow.pm25 <=25)
 		{
