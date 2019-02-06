@@ -378,40 +378,6 @@
 			});
 		});
 
-		var pmchart = [];
-		logDHT.once('value').then(function(snapshot){
-			pmchart.push(snapshot.val()['PM 2.5']);
-			pmchart.push(snapshot.val()['PM 1']);
-			pmchart.push(snapshot.val()['PM 10']);
-		})
-		console.log(pmchart);
-		var ctx = document.getElementById("myChart4").getContext('2d');
-		var myChart = new Chart(ctx, {
-				type: 'line',
-				data: {
-					//labels: ["PM 2.5", "Female", "Non-Binary", "Other", "Unspecified"],
-					datasets: [{
-						data: pmchart,
-					}]
-				},
-				options: {
-					title: {
-						display: true,
-						text: 'Total Students by Time Taken to Complete Degree'
-					},
-					legend: {
-						display: false
-					},
-					scales: {
-						yAxes: [{
-							ticks: {
-								beginAtZero: true
-							}
-						}]
-					}
-				}
-			});
-
 	</script>
 
 	<style>
@@ -687,12 +653,12 @@
 					</center>
 				</div>
 				<br>
-				<div class="row">
-					<canvas id="myChart4" style="height:300px; width: 70%"></canvas>
+				<!-- <div class="row">
+					//<canvas id="myChart4" style="height:300px; width: 70%"></canvas>
 
 
 
-				</div>
+				</div> -->
 			</div>
 
 		</div>
