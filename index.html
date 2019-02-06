@@ -308,7 +308,7 @@ function toogleDataSeries(e){
 		$("#status > .content").text("Up to date 5"); // ไม่มีอุปกรณ์มาต่อเลย
 		} else {
 			$("#status").removeClass("loading").removeClass("success").addClass("danger");
-			$("#status > .content").text("Updating...");   // ต่อ แต่ไม่มีไอเทม
+			$("#status > .content").text("Device Online");   // ต่อ แต่ไม่มีไอเทม
 		}
 
 		if(Arow.pm25 >=0 && Arow.pm25 <=25)
