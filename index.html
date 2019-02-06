@@ -181,7 +181,7 @@ function toogleDataSeries(e){
 		if (!newItems)  // ต่ออยู่ แต่ไม่มีข้อมูลใหม่เข้ามา
 		{
 			$("#status").removeClass("danger").addClass("success");
-			$("#status > .content").text("Up to date");
+			$("#status > .content").text("Up to date 1");
 			return;
 		} 
 		
@@ -209,16 +209,16 @@ function toogleDataSeries(e){
 		$('#update_time').html(row.tims);
 
 		$("#status").removeClass("danger").removeClass("loading").addClass("success");
-		$("#status > .content").text("Up to date");
+		$("#status > .content").text("Up to date 2 ");
 
 		if (Math.round(now) -  Math.round(Arow.time) < (2 * 60 * 1000)) {
 			$("#status").removeClass("danger").removeClass("loading").addClass("success");
-			$("#status > .content").text("Up to date");
+			$("#status > .content").text("Up to date 3 ");
 			
 			
 		} else {
 			$("#status").removeClass("danger").removeClass("loading").addClass("success");
-			$("#status > .content").text("Up to date");
+			$("#status > .content").text("Up to date 4");
 		}
 
 		if(row.pm25 >=0 && row.pm25 <=25)
@@ -305,7 +305,7 @@ function toogleDataSeries(e){
 
 		if (Math.round(now) -  Math.round(Arow.time) < (2 * 60 * 1000)) {
 		$("#status").removeClass("loading").removeClass("danger").addClass("success");
-		$("#status > .content").text("Up to date"); // ไม่มีอุปกรณ์มาต่อเลย
+		$("#status > .content").text("Up to date 5"); // ไม่มีอุปกรณ์มาต่อเลย
 		} else {
 			$("#status").removeClass("loading").removeClass("success").addClass("danger");
 			$("#status > .content").text("Updating...");   // ต่อ แต่ไม่มีไอเทม
@@ -364,7 +364,7 @@ var setTimeoffline = function() {   // ถ้าไม่มีการเช�
 	
 	toOffline = setTimeout(function() {
 		$("#status").removeClass("danger").removeClass("loading").addClass("success");
-		$("#status > .content").text("Up to date");
+		$("#status > .content").text("Up to date 6");
 	}, 2 * 60 * 1000);
 }
 
