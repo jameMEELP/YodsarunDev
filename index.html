@@ -302,7 +302,7 @@ function toogleDataSeries(e){
 		var now = new Date();
 		Arow.time = new Date(Arow.time);
 		$("#status").removeClass("loading").removeClass("success").addClass("danger");
-		$("#status > .content").text("<small>Updating Data..</small>");
+		$("#status > .content").html("<small>Updating Data..</small>");
 
 		
 		// if (Math.round(now) -  Math.round(Arow.time) < (2 * 60 * 1000)) {
