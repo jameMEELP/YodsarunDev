@@ -176,7 +176,7 @@ $(document).ready(function(e) {
 		} 
 		
 		var row = sanp.val();
-		//var length = chart2.options.data[0].dataPoints.length;
+		var length = chart2.options.data[0].dataPoints.length;
 		
 
 
@@ -270,7 +270,8 @@ $(document).ready(function(e) {
 			lastRows = row;
 		});
 		chart.render();
-		var length = sanp.val();//chart2.options.data[0].dataPoints.length;
+		
+		var length = chart2.options.data[0].dataPoints.length;
 		
 		$.each(length, function(index, row) {
 		 	chart2.options.data[0].dataPoints.push({x: row.time, y: row.pm1});
