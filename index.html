@@ -159,9 +159,6 @@ $(document).ready(function(e) {
 
 	chart2.render();
 
-	
-
-
 
 function toogleDataSeries(e){
 		if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
@@ -461,12 +458,7 @@ function toogleDataSeries(e){
 		}
 		else if(Arow.pm10 > 180)
 		{
-			$("#pm10").removeClass("loading")
-			.removeClass("good")
-			.removeClass("mediam")
-			.removeClass("bad")
-			.removeClass("verygood")
-			.addClass("verybad");
+			$("#pm10").removeClass("loading").removeClass("good").removeClass("mediam").removeClass("bad").removeClass("verygood").addClass("verybad");
 			// $("#pm10").removeClass("loading","good","mediam","bad","verygood").addClass("verybad");
 		}
 	
