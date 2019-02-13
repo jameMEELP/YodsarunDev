@@ -188,8 +188,7 @@ function toogleDataSeries(e){
 		var row = sanp.val();
 		var length = chart2.options.data[0].dataPoints.length;
 		
-
-
+		
 		row.time = new Date(row.time);
 
 		chart.options.data[0].dataPoints.push({x: row.time, y: row.temperature});
@@ -636,10 +635,11 @@ td{
 			var myChart = new Chart(ctx, {
 				type: 'bar',
 				data: {
-					labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+					// labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
 					datasets: [{
 						label: '# of Votes',
-						data: [12, 19, 3, 5, 2, 3],
+						// data: [12, 19, 3, 5, 2, 3],
+						data:chart,
 						backgroundColor: [
 							'rgba(255, 99, 132, 0.2)',
 							'rgba(54, 162, 235, 0.2)',
