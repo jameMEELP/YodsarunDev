@@ -227,45 +227,100 @@ function toogleDataSeries(e){
 
 		if(row.pm25 >=0 && row.pm25 <=25)
 		{
-			$("#pm25").removeClass("loading","good","mediam","verybad","bad").addClass("verygood");
+			$("#pm25").removeClass("loading")
+			.removeClass("good")
+			.removeClass("mediam")
+			.removeClass("verybad")
+			.removeClass("bad")
+			.addClass("verygood");
 		}
 		else if(row.pm25 >=26 && row.pm25 <=37)
 		{
-			$("#pm25").removeClass("loading","verygood","mediam","verybad","bad").addClass("good");
+			$("#pm25").removeClass("loading")
+			.removeClass("verygood")
+			.removeClass("mediam")
+			.removeClass("verybad")
+			.removeClass("bad")
+			.addClass("good");
 		}
 		else if(row.pm25 >=38 && row.pm25 <=50)
 		{
-			$("#pm25").removeClass("loading","good","verygood","verybad","bad").addClass("mediam");
+			$("#pm25").removeClass("loading")
+			.removeClass("good")
+			.removeClass("verygood")
+			.removeClass("verybad")
+			.removeClass("bad")
+			.addClass("mediam");
 		}
 		else if(row.pm25 >=51 && row.pm25 <=90)
 		{
-			$("#pm25").removeClass("loading","good","mediam","verybad","verygood").addClass("bad");
+			$("#pm25").removeClass("loading")
+			.removeClass("good")
+			.removeClass("mediam")
+			.removeClass("verybad")
+			.removeClass("verygood")
+			.addClass("bad");
 		}
 		else if(row.pm25 > 90)
 		{
-			$("#pm25").removeClass("loading","good","mediam","bad","verygood").addClass("verybad");
+			$("#pm25").removeClass("loading")
+			.removeClass("good")
+			.removeClass("mediam")
+			.removeClass("bad")
+			.removeClass("verygood")
+			.addClass("verybad");
 		}
 
 		////////////////////////////////////////////////////////////////////////////////////////////////////
 		if(row.pm10 >=0 && row.pm10 <=50)
 		{
-			$("#pm10").removeClass("loading","good","mediam","verybad","bad").addClass("verygood");
+			$("#pm10").removeClass("loading")
+			.removeClass("good")
+			.removeClass("mediam")
+			.removeClass("verybad")
+			.removeClass("bad")
+			.addClass("verygood");
+			//$("#pm10").removeClass("loading","good","mediam","verybad","bad").addClass("verygood");
 		}
 		else if(row.pm10 >=51 && row.pm10 <=80)
 		{
-			$("#pm10").removeClass("loading","verygood","mediam","verybad","bad").addClass("good");
+			$("#pm10").removeClass("loading")
+			.removeClass("verygood")
+			.removeClass("mediam")
+			.removeClass("verybad")
+			.removeClass("bad")
+			.addClass("good");
+			//$("#pm10").removeClass("loading","verygood","mediam","verybad","bad").addClass("good");
 		}
 		else if(row.pm10 >=81 && row.pm10 <=120)
 		{
-			$("#pm10").removeClass("loading","good","verygood","verybad","bad").addClass("mediam");
+			$("#pm10").removeClass("loading")
+			.removeClass("good")
+			.removeClass("verygood")
+			.removeClass("verybad")
+			.removeClass("bad")
+			.addClass("mediam");
+			//$("#pm10").removeClass("loading","good","verygood","verybad","bad").addClass("mediam");
 		}
 		else if(row.pm10 >=121 && row.pm10 <=180)
 		{
-			$("#pm10").removeClass("loading","good","mediam","verybad","verygood").addClass("bad");
+			$("#pm10").removeClass("loading")
+			.removeClass("good")
+			.removeClass("mediam")
+			.removeClass("verybad")
+			.removeClass("verygood")
+			.addClass("bad");
+			// $("#pm10").removeClass("loading","good","mediam","verybad","verygood").addClass("bad");
 		}
 		else if(row.pm10 > 180)
 		{
-			$("#pm10").removeClass("loading","good","mediam","bad","verygood").addClass("verybad");
+			$("#pm10").removeClass("loading")
+			.removeClass("good")
+			.removeClass("mediam")
+			.removeClass("bad")
+			.removeClass("verygood")
+			.addClass("verybad");
+			// $("#pm10").removeClass("loading","good","mediam","bad","verygood").addClass("verybad");
 		}
 
 		setTimeoffline();
@@ -319,45 +374,100 @@ function toogleDataSeries(e){
 
 		if(Arow.pm25 >=0 && Arow.pm25 <=25)
 		{
-			$("#pm25").removeClass("loading","good","mediam","verybad","bad").addClass("verygood");
+			$("#pm25").removeClass("loading")
+			.removeClass("good")
+			.removeClass("mediam")
+			.removeClass("verybad")
+			.removeClass("bad")
+			.addClass("verygood");
 		}
 		else if(Arow.pm25 >=26 && Arow.pm25 <=37)
 		{
-			$("#pm25").removeClass("loading","verygood","mediam","verybad","bad").addClass("good");
+			$("#pm25").removeClass("loading")
+			.removeClass("verygood")
+			.removeClass("mediam")
+			.removeClass("verybad")
+			.removeClass("bad")
+			.addClass("good");
 		}
 		else if(Arow.pm25 >=38 && Arow.pm25 <=50)
 		{
-			$("#pm25").removeClass("loading","good","verygood","verybad","bad").addClass("mediam");
+			$("#pm25").removeClass("loading")
+			.removeClass("good")
+			.removeClass("verygood")
+			.removeClass("verybad")
+			.removeClass("bad")
+			.addClass("mediam");
 		}
 		else if(Arow.pm25 >=51 && Arow.pm25 <=90)
 		{
-			$("#pm25").removeClass("loading","good","mediam","verybad","verygood").addClass("bad");
+			$("#pm25").removeClass("loading")
+			.removeClass("good")
+			.removeClass("mediam")
+			.removeClass("verybad")
+			.removeClass("verygood")
+			.addClass("bad");
 		}
 		else if(Arow.pm25 > 90)
 		{
-			$("#pm25").removeClass("loading","good","mediam","bad","verygood").addClass("verybad");
+			$("#pm25").removeClass("loading")
+			.removeClass("good")
+			.removeClass("mediam")
+			.removeClass("bad")
+			.removeClass("verygood")
+			.addClass("verybad");
 		}
 
 		////////////////////////////////////////////////////////////////////////////////////////////////////
 		if(Arow.pm10 >=0 && Arow.pm10 <=50)
 		{
-			$("#pm10").removeClass("loading","good","mediam","verybad","bad").addClass("verygood");
+			$("#pm10").removeClass("loading")
+			.removeClass("good")
+			.removeClass("mediam")
+			.removeClass("verybad")
+			.removeClass("bad")
+			.addClass("verygood");
+			//$("#pm10").removeClass("loading","good","mediam","verybad","bad").addClass("verygood");
 		}
 		else if(Arow.pm10 >=51 && Arow.pm10 <=80)
 		{
-			$("#pm10").removeClass("loading","verygood","mediam","verybad","bad").addClass("good");
+			$("#pm10").removeClass("loading")
+			.removeClass("verygood")
+			.removeClass("mediam")
+			.removeClass("verybad")
+			.removeClass("bad")
+			.addClass("good");
+			//$("#pm10").removeClass("loading","verygood","mediam","verybad","bad").addClass("good");
 		}
 		else if(Arow.pm10 >=81 && Arow.pm10 <=120)
 		{
-			$("#pm10").removeClass("loading","good","verygood","verybad","bad").addClass("mediam");
+			$("#pm10").removeClass("loading")
+			.removeClass("good")
+			.removeClass("verygood")
+			.removeClass("verybad")
+			.removeClass("bad")
+			.addClass("mediam");
+			//$("#pm10").removeClass("loading","good","verygood","verybad","bad").addClass("mediam");
 		}
 		else if(Arow.pm10 >=121 && Arow.pm10 <=180)
 		{
-			$("#pm10").removeClass("loading","good","mediam","verybad","verygood").addClass("bad");
+			$("#pm10").removeClass("loading")
+			.removeClass("good")
+			.removeClass("mediam")
+			.removeClass("verybad")
+			.removeClass("verygood")
+			.addClass("bad");
+			// $("#pm10").removeClass("loading","good","mediam","verybad","verygood").addClass("bad");
 		}
 		else if(Arow.pm10 > 180)
 		{
-			$("#pm10").removeClass("loading","good","mediam","bad","verygood").addClass("verybad");
+			$("#pm10").removeClass("loading")
+			.removeClass("good")
+			.removeClass("mediam")
+			.removeClass("bad")
+			.removeClass("verygood")
+			.addClass("verybad");
+			// $("#pm10").removeClass("loading","good","mediam","bad","verygood").addClass("verybad");
 		}
 	
 		setTimeoffline();
@@ -628,58 +738,6 @@ td{
 		<div class="row">
 			<center><div id="chartContainer2" style="height: 300px; width: 70%;"></div></center>
 		</div> 
-		<!-- <br> -->
-		<!-- <div class="row">
-		<canvas id="myChart" style="height:300px; width: 70%"></canvas>
-		
-		
-
-	</div> -->
-	<div>
-			<canvas id="myChart" width="400" height="400"></canvas>
-
-		<script>
-			var ctx = document.getElementById("myChart");
-			var myChart = new Chart(ctx, {
-				type: 'line',
-				data: 
-				{
-					labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-					datasets: vpm1
-					// [{
-					// 	label: '# of Votes',
-					// 	data: [12, 19, 3, 5, 2, 3],
-					// 	backgroundColor: [
-					// 		'rgba(255, 99, 132, 0.2)',
-					// 		'rgba(54, 162, 235, 0.2)',
-					// 		'rgba(255, 206, 86, 0.2)',
-					// 		'rgba(75, 192, 192, 0.2)',
-					// 		'rgba(153, 102, 255, 0.2)',
-					// 		'rgba(255, 159, 64, 0.2)'
-					// 	],
-					// 	borderColor: [
-					// 		'rgba(255,99,132,1)',
-					// 		'rgba(54, 162, 235, 1)',
-					// 		'rgba(255, 206, 86, 1)',
-					// 		'rgba(75, 192, 192, 1)',
-					// 		'rgba(153, 102, 255, 1)',
-					// 		'rgba(255, 159, 64, 1)'
-					// 	],
-					// 	borderWidth: 1
-					// }]
-				},
-				options: {
-					scales: {
-						yAxes: [{
-							ticks: {
-								beginAtZero:true
-							}
-						}]
-					}
-				}
-			});
-			</script>
-	</div>
 	
 	</div>
 		
